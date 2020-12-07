@@ -4,39 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
 
-    <title>Proyecto MatcheADAs</title>
+    <title>Proyecto MatcheADAs: Belu, Rosy & Lu</title>
 
 </head>
 
 <body>
 
-    <div class="contenedor-fondo">
+    <section class="seccion-principal contenedor-fondo">
         <h1 class="nombre-juego">MatcheADAS</h1>
         <div class="caja-combo">
             <div class="contenedor-puntaje">
-                <p>
-                    "Combo X"
-                    <span id="combo">1</span>
-                </p>
+                <p>"Combo X"<span id="combo">1</span></p>
 
-
-                <p>
-                    "Puntos: "
-                    <span id="puntaje" class="puntaje">0</span>
-                </p>
-
+                <p>"Puntos: "<span id="puntaje" class="puntaje">0</span></p>
             </div>
+
             <div>
-                <button id="boton-ayuda">
+                <button id="boton-ayuda" type="button">
                     <i class="fas fa-undo-alt"></i>
-                  
-                    </button>
-                <button id="boton-reiniciar">
-                        <i class="fas fa-undo-alt"></i>
-                      </button>
+                </button>
+
+                <button id="boton-reiniciar" type="button">
+                    <i class="fas fa-undo-alt"></i>
+                </button>
             </div>
         </div>
         <div class="caja-grilla">
@@ -48,51 +43,48 @@
             <i class="fas fa-hourglass-half"></i>
             <p class="tiempo-restante">0:00</p>
         </div>
-    </div>
+    </section>
 
-    <div class="overlay">
+    <section class="overlay oculto">
 
         <div class="modal oculto" id="bienvenida-modal" role="dialog">
 
             <h2 class="modal-bienvenida">¡Bienvenida!</h2>
             <div class="modal-contenido">
-                <p class="modal-parrafo">
-                    En MatcheADAs tu objetivo es juntar tres o más ítems del mismo tipo, ya sea en fila o columna. Para eso, selecciona un ítem y a continuación un ítem adyacente para intercambiarlos de lugar.
-                </p>
-                <p class="modal-parrafo>
-                    Si se forma un grupo, esos ítems se eliminarán y ganarás puntos. ¡Sigue armando grupos de 3 o más antes de que se acabe el tiempo!
-                </p>
+                <p class="modal-parrafo">En MatcheADAs tu objetivo es juntar tres o más ítems del mismo tipo, ya sea en
+                    fila o columna. Para eso, selecciona un ítem y a continuación un ítem adyacente para intercambiarlos
+                    de lugar.</p>
+                <p class="modal-parrafo">Si se forma un grupo, esos ítems se eliminarán y ganarás puntos. ¡Sigue armando
+                    grupos de 3 o más antes de que se acabe el tiempo!</p>
+
                 <strong class=" modal-parrafo ">Controles</strong>
                 <p>Click izquierdo: selección</p>
                 <p>Enter o Espacio: selección</p>
                 <p>Flechas o WASD: movimiento e intercambio</p>
 
             </div>
-            <div class="modal-button ">
-                <button class="boton " id="comenzar-boton ">Comienza!</button>
-              </div>
+
+            <div class="modal-button">
+                <button class="boton" id="comenzar-boton">Comienza!</button>
             </div>
 
         </div>
-        <div class="modal-oculto "
-        id="modal-reinicio "
-        role="dialog "
-        >
-        
 
-        <h2 class="modal-jugar ">Jugar de nuevo?</h2>
-        <div class="modal-contenido ">
-          <p class="modal-texto ">Perderás todo tu puntaje acumulado!</p>
+        <div class="modal-oculto" id="modal-reinicio" role="dialog">
+            <h2 class="modal-jugar">Jugar de nuevo?</h2>
+            <div class="modal-contenido ">
+                <p class="modal-texto ">Perderás todo tu puntaje acumulado!</p>
+            </div>
+
+            <div class="modal-button">
+                <button class="boton boton-cancelar">Cancelar</button>
+                <button class="boton" id="nuevo-juego-boton">Nuevo Juego</button>
+            </div>
+
         </div>
-        <div class="modal-button ">
-          <button class="boton boton-cancelar ">Cancelar</button>
-          <button class="boton" id="nuevo-juego-boton ">Nuevo Juego</button>
-        </div>
-      </div>
+    </section>
 
 
-
-    </div>
     <script src="index.js "></script>
 </body>
 

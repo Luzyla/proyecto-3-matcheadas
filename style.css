@@ -70,8 +70,7 @@ html, body {
     margin-left: 15px;
 }
 
-#boton-ayuda,
-#boton-reiniciar {
+#boton-ayuda, #boton-reiniciar {
     background-color: transparent;
     border: 0;
     padding: 5px;
@@ -113,10 +112,6 @@ html, body {
     transition: opacity 0.3s;
 }
 
-.oculto {
-    display: none;
-}
-
 .modal {
     position: absolute;
     top: 50%;
@@ -148,4 +143,9 @@ html, body {
     padding-top: 13px;
     margin-top: 13px;
     padding: 13px 25px 18px;
+}
+
+
+.oculto {
+    display: none;
 }
