@@ -27,7 +27,7 @@ const crearGrilla = (filas, columnas, array) => {
         for (let j = 0; j < columnas; j++) {
             matriz[i][j] = obtenerItemAlAzar(array);
 
-            grilla.innerHTML += `<div id="grilla"  data-fila=${i} data-columna=${j}>
+            grilla.innerHTML += `<div id="grilla"  style ="width:${anchoDeGrilla}px;"  style =  height:"${anchoDeGrilla}px"; data-fila=${i} data-columna=${j}>
                               ${matriz[i][j]}
                               </div>`;
 
