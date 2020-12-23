@@ -1,159 +1,167 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(2-02.svg);
-  background-size: cover;
-  background-position-y: 50%;
-  padding: 0 10px;
-  user-select: none;
-  background-image: url("imagenes/jungle-vector.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(2-02.svg);
+    background-size: cover;
+    background-position-y: 50%;
+    padding: 0 10px;
+    user-select: none;
+    background-image: url("imagenes/jungle-vector.jpg");
 }
 
 html,
 body {
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  font-family: "Pacifico", sans-serif;
-  color: #424242;
-  text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa,
-    -1px 1px #fafafa;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: Oxygen;
+    color: #004225;
+    /* text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa, -1px 1px #fafafa; */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .contenedor-fondo {
-  max-width: 500px;
-  width: 500px;
+    max-width: 500px;
+    width: 500px;
 }
 
 .nombre-juego {
-  text-align: center;
-  font-size: 45px;
-  font-family: "Fredoka One", cursive;
-  margin-top: 0;
-  align-content: center;
-  font-weight: 800;
-  color: #dc2f02;
-  margin-bottom: 60px;
+    text-align: center;
+    font-size: 45px;
+    font-family: "Sedgwick Ave";
+    margin-top: 0;
+    align-content: center;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 60px;
 }
 
 .caja-combo {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  background-color: #fca311;
-  padding: 5px 10px;
-  border-radius: 8px;
-  border: 3px solid #fafafa;
-  color: #fafafa;
-  text-shadow: 1px 1px #424242, 1px -1px #424242, -1px -1px #424242,
-    -1px 1px #424242;
-  box-shadow: 0px 0px 5px 4px #00000021 inset;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #fca311;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 3px solid #fafafa;
+    color: #fafafa;
+    text-shadow: 1px 1px #424242, 1px -1px #424242, -1px -1px #424242, -1px 1px #424242;
+    box-shadow: 0px 0px 5px 4px #00000021 inset;
 }
 
 .contenedor-puntaje {
-  display: flex;
-  align-items: center;
-  font-size: 22px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
 }
 
 .contenedor-puntaje p {
-  display: flex;
+    display: flex;
 }
 
 #combo {
-  width: 20px;
-  margin-right: 20px;
+    width: 20px;
+    margin-right: 20px;
 }
 
 #puntaje {
-  margin-left: 15px;
+    margin-left: 15px;
 }
 
 #boton-ayuda,
 #boton-reiniciar {
-  background-color: transparent;
-  border: 0;
-  padding: 5px;
-  color: #424242;
-  font-size: 20px;
-  cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 5px;
+    color: #424242;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 #boton-reiniciar i {
-  transform: rotate(0);
-  transition: 0.2s;
+    transform: rotate(0);
+    transition: 0.2s;
 }
 
 .caja-grilla {
-  height: 450px;
-  border-radius: 10px;
-  padding: 10px;
-  border: 3px solid #fafafa;
-  background: rgb(0 0 0 / 73%);
-  justify-content: center;
-  flex-wrap: wrap;
-  display: flex;
+    height: 450px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 3px solid #fafafa;
+    background: rgb(0 0 0 / 73%);
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
 }
 
 #grilla {
-  border: 1px solid #c5c5c5;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    border: 1px solid #c5c5c5;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 10000;
-  transition: opacity 0.3s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+    transition: opacity 0.3s;
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: #e09f3e;
-  text-align: center;
-  border-radius: 5px;
-  margin: 20px auto;
-  display: inline-block;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45vw;
+    background-color: #a5d610;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px 30px;
+    padding: 0 30px;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+    border: 3px solid #004225;
 }
 
 .modal-titulo {
-  color: black;
-  font-weight: 600;
-  position: relative;
-  display: block;
-  padding: 13px 16px;
-  font-size: 27px;
-  text-align: center;
+    color: black;
+    font-weight: 600;
+    position: relative;
+    display: block;
+    padding: 13px 16px;
+    font-size: 27px;
+    text-align: center;
 }
 
 .modal-texto {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .modal-button {
-  text-align: center;
-  padding-top: 13px;
-  margin-top: 13px;
-  padding: 13px 25px 18px;
+    text-align: center;
+    padding-top: 13px;
+    margin-top: 13px;
+    padding: 13px 25px 18px;
 }
 
 .oculto {
-  display: none;
+    /* revisar si conviene usar display none o moverlo fuera del foco */
+    display: none;
 }
