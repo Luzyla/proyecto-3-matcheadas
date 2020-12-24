@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Proyecto MatcheADAs: Belu, Rosy & Lu</title>
+    <title>Proyecto MatcheADAs: Rosy & Lu</title>
 
 </head>
 
 <body>
 
-    <section class="overlay-inicio">
+    <section class="overlay-inicio oculto">
 
         <div class="contenedor-bienvenida" id="bienvenida-modal" role="dialog">
 
@@ -52,8 +53,6 @@
 
     </section>
 
-
-
     <section class="overlay-reinicio oculto">
 
         <div class="contenedor-reinicio">
@@ -70,13 +69,14 @@
         </div>
     </section>
 
-    <section class="seccion-principal contenedor-fondo">
+    <section class="seccion-principal">
         <h1 class="nombre-juego">MatcheADAS</h1>
-        <div class="caja-combo">
-            <div class="contenedor-puntaje">
-                <p>"Combo X"<span id="combo">1</span></p>
 
-                <p>"Puntos: "<span id="puntaje" class="puntaje">0</span></p>
+        <div class="contenedor-juego">
+            <div class="contenedor-puntaje">
+                <p>Combo x<span id="combo">1</span></p>
+
+                <p>Puntos: <span id="puntaje" class="puntaje">0</span></p>
             </div>
 
             <div>
@@ -91,8 +91,8 @@
         </div>
 
         <div class="caja-grilla">
-            <!-- <div id="grillas"></div> -->
 
+            <!-- Grilla se arma en JS -->
 
         </div>
 
@@ -102,6 +102,10 @@
         </div>
 
     </section>
+
+    <footer class="oculto">
+        <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+    </footer>
 
 
 
