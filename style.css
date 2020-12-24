@@ -1,5 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+
+/*----------------------------------------------
+                BASIC
+----------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -14,32 +25,25 @@ body {
 
 html,
 body {
-    height: 100vh;
+    /* height: 100vh; */
     overflow: hidden;
-    margin: 0;
     font-family: Oxygen;
     color: #004225;
     /* text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa, -1px 1px #fafafa; */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-.contenedor-fondo {
-    max-width: 500px;
-    width: 500px;
-}
+/*----------------------------------------------
+            SECCIÓN PRINCIPAL
+----------------------------------------------*/
 
 .nombre-juego {
     text-align: center;
     font-size: 45px;
-    font-family: "Sedgwick Ave";
+    font-family: "Hanalei Fill";
     margin-top: 0;
     align-content: center;
-    font-weight: 800;
+    font-weight: 600;
     color: #004225;
     margin-bottom: 60px;
 }
@@ -112,54 +116,101 @@ body {
     align-items: center;
 }
 
-.overlay {
-    position: fixed;
+
+/*----------------------------------------------
+            OVERLAY Y MODALES
+----------------------------------------------*/
+
+.overlay-inicio,
+.overlay-reinicio {
+    position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0;
     right: 0;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
-    overflow-y: auto;
+    overflow-y: hidden;
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 10000;
-    transition: opacity 0.3s;
+    /* transition: opacity 0.3s; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 45vw;
+.overlay-inicio {
+    z-index: 3;
+}
+
+.overlay-reinicio {
+    z-index: 1;
+}
+
+.contenedor-bienvenida {
+    width: 40vw;
+    position: relative;
+    top: 36%;
+    left: 20%;
     background-color: #a5d610;
+    border: 3px solid #004225;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 15px;
     margin: 10px 30px;
     padding: 0 30px;
     display: inline-block;
     transform: translate(-50%, -50%);
-    border: 3px solid #004225;
+    z-index: 4;
 }
 
-.modal-titulo {
-    color: black;
-    font-weight: 600;
-    position: relative;
-    display: block;
-    padding: 13px 16px;
-    font-size: 27px;
+.titulo-bienvenida {
+    font-weight: 400;
+    font-size: 50px;
+    font-family: "Hanalei Fill";
+    margin: 25px 0;
+    text-shadow: 2px 2px 4px #fafafa;
+}
+
+.titulo-controles {
+    font-family: "Hanalei Fill";
+    font-size: 28px;
     text-align: center;
+    margin: 20px 20px 10px 20px;
+    text-shadow: 2px 2px 4px #fafafa;
 }
 
-.modal-texto {
+.txt-nuevo-juego {
     margin-bottom: 20px;
 }
 
-.modal-button {
-    text-align: center;
-    padding-top: 13px;
-    margin-top: 13px;
-    padding: 13px 25px 18px;
+.txt-bienvenida,
+.txt-controles {
+    font-size: 16px;
+    text-shadow: 2px 2px 4px #fafafa;
 }
+
+.txt-bienvenida {
+    padding: 10px;
+}
+
+.txt-controles {
+    padding: 2px;
+}
+
+.boton-basico {
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    margin: 20px;
+    background-color: #004225;
+    color: #fafafa;
+    font-size: 20px;
+    font-family: "Hanalei Fill";
+}
+
+
+/*----------------------------------------------
+                DISPLAY NONE
+----------------------------------------------*/
 
 .oculto {
     /* revisar si conviene usar display none o moverlo fuera del foco */
