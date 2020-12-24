@@ -122,7 +122,8 @@ body {
 ----------------------------------------------*/
 
 .overlay-inicio,
-.overlay-reinicio {
+.overlay-reinicio,
+.overlay-niveles {
     position: absolute;
     top: 0;
     right: 0;
@@ -131,21 +132,38 @@ body {
     text-align: center;
     overflow-y: hidden;
     background-color: rgba(0, 0, 0, 0.4);
-    /* transition: opacity 0.3s; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.contenedor-bienvenida {
+    z-index: 6;
+}
+
 .overlay-inicio {
+    z-index: 5;
+}
+
+.contenedor-niveles {
+    z-index: 4;
+}
+
+.overlay-niveles {
     z-index: 3;
+}
+
+.contenedor-reinicio {
+    z-index: 2;
 }
 
 .overlay-reinicio {
     z-index: 1;
 }
 
-.contenedor-bienvenida {
+.contenedor-bienvenida,
+.contenedor-niveles,
+.contenedor-reinicio {
     width: 40vw;
     position: relative;
     top: 36%;
@@ -158,7 +176,6 @@ body {
     padding: 0 30px;
     display: inline-block;
     transform: translate(-50%, -50%);
-    z-index: 4;
 }
 
 .titulo-bienvenida {
@@ -169,7 +186,8 @@ body {
     text-shadow: 2px 2px 4px #fafafa;
 }
 
-.titulo-controles {
+.titulo-controles,
+.titulo-niveles {
     font-family: "Hanalei Fill";
     font-size: 28px;
     text-align: center;
@@ -199,12 +217,23 @@ body {
     text-align: center;
     width: 150px;
     height: 50px;
-    padding: 5px;
+    padding: 10px;
     margin: 20px;
     background-color: #004225;
     color: #fafafa;
     font-size: 24px;
     font-family: "Hanalei Fill";
+    border-radius: 10px;
+}
+
+.size-emoji {
+    font-size: 25px;
+}
+
+.boton-niveles {
+    width: 200px;
+    padding: 5px;
+    margin: 10px;
 }
 
 

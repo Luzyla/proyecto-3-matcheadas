@@ -13,7 +13,7 @@
 
 <body>
 
-    <section class="overlay-inicio">
+    <section class="overlay-inicio oculto">
 
         <div class="contenedor-bienvenida" id="bienvenida-modal" role="dialog">
 
@@ -31,15 +31,32 @@
 
             </div>
 
+        </div>
+
+    </section>
+
+    <section class="overlay-niveles">
+
+        <div class="contenedor-niveles">
+
+            <h2 class="titulo-niveles">Nuevo Juego</h2>
+            <p class="txt-controles">Selecciona el nivel de juego para poder comenzar a jugar!</p>
+
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-facil"><span class="size-emoji">🦉 </span> Fácil</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-intermedio"><span class="size-emoji">🐵 </span>Intermedio</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-difícil"><span class="size-emoji">🦁 </span>Difícil</button>
+
 
 
         </div>
 
     </section>
 
+
+
     <section class="overlay-reinicio">
 
-        <div class="msg-reinicio-juego" id="mensaje-reinicio-juego" role="dialog">
+        <div class="contenedor-reinicio">
             <h2 class="pregunta-nuevo-juego">Jugar de nuevo?</h2>
             <div class="contenedor-mensaje-nuevo-juego">
                 <p class="txt-nuevo-juego">Perderás todo tu puntaje acumulado!</p>
