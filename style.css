@@ -17,103 +17,20 @@ body {
     align-items: center;
     background-image: url(2-02.svg);
     background-size: cover;
+    background-repeat: no-repeat;
     background-position-y: 50%;
     padding: 0 10px;
     user-select: none;
-    background-image: url("imagenes/jungle-vector.jpg");
+    background-image: url("images/jungle-vector.jpg");
 }
 
 html,
 body {
     /* height: 100vh; */
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: Oxygen;
     color: #004225;
     /* text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa, -1px 1px #fafafa; */
-}
-
-
-/*----------------------------------------------
-            SECCIÓN PRINCIPAL
-----------------------------------------------*/
-
-.nombre-juego {
-    text-align: center;
-    font-size: 45px;
-    font-family: "Hanalei Fill";
-    margin-top: 0;
-    align-content: center;
-    font-weight: 600;
-    color: #004225;
-    margin-bottom: 60px;
-}
-
-.caja-combo {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: #fca311;
-    padding: 5px 10px;
-    border-radius: 8px;
-    border: 3px solid #fafafa;
-    color: #fafafa;
-    text-shadow: 1px 1px #424242, 1px -1px #424242, -1px -1px #424242, -1px 1px #424242;
-    box-shadow: 0px 0px 5px 4px #00000021 inset;
-}
-
-.contenedor-puntaje {
-    display: flex;
-    align-items: center;
-    font-size: 22px;
-}
-
-.contenedor-puntaje p {
-    display: flex;
-}
-
-#combo {
-    width: 20px;
-    margin-right: 20px;
-}
-
-#puntaje {
-    margin-left: 15px;
-}
-
-#boton-ayuda,
-#boton-reiniciar {
-    background-color: transparent;
-    border: 0;
-    padding: 5px;
-    color: #424242;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#boton-reiniciar i {
-    transform: rotate(0);
-    transition: 0.2s;
-}
-
-.caja-grilla {
-    height: 450px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 3px solid #fafafa;
-    background: rgb(0 0 0 / 73%);
-    justify-content: center;
-    flex-wrap: wrap;
-    display: flex;
-}
-
-#grilla {
-    border: 1px solid #c5c5c5;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 
@@ -122,7 +39,8 @@ body {
 ----------------------------------------------*/
 
 .overlay-inicio,
-.overlay-reinicio {
+.overlay-reinicio,
+.overlay-niveles {
     position: absolute;
     top: 0;
     right: 0;
@@ -131,21 +49,38 @@ body {
     text-align: center;
     overflow-y: hidden;
     background-color: rgba(0, 0, 0, 0.4);
-    /* transition: opacity 0.3s; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.contenedor-bienvenida {
+    z-index: 6;
+}
+
 .overlay-inicio {
+    z-index: 5;
+}
+
+.contenedor-niveles {
+    z-index: 4;
+}
+
+.overlay-niveles {
     z-index: 3;
+}
+
+.contenedor-reinicio {
+    z-index: 2;
 }
 
 .overlay-reinicio {
     z-index: 1;
 }
 
-.contenedor-bienvenida {
+.contenedor-bienvenida,
+.contenedor-niveles,
+.contenedor-reinicio {
     width: 40vw;
     position: relative;
     top: 36%;
@@ -158,7 +93,6 @@ body {
     padding: 0 30px;
     display: inline-block;
     transform: translate(-50%, -50%);
-    z-index: 4;
 }
 
 .titulo-bienvenida {
@@ -169,7 +103,8 @@ body {
     text-shadow: 2px 2px 4px #fafafa;
 }
 
-.titulo-controles {
+.titulo-controles,
+.titulo-niveles {
     font-family: "Hanalei Fill";
     font-size: 28px;
     text-align: center;
@@ -203,8 +138,111 @@ body {
     margin: 20px;
     background-color: #004225;
     color: #fafafa;
-    font-size: 20px;
+    font-size: 24px;
     font-family: "Hanalei Fill";
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.size-emoji {
+    font-size: 25px;
+}
+
+.boton-niveles {
+    width: 200px;
+    padding: 5px;
+    margin: 10px;
+}
+
+
+/*----------------------------------------------
+            SECCIÓN PRINCIPAL
+----------------------------------------------*/
+
+.seccion-principal {
+    height: 100vh;
+}
+
+.nombre-juego {
+    font-size: 55px;
+    font-family: "Hanalei Fill";
+    margin: 15px 0;
+    color: #004225;
+    text-shadow: 2px 2px 4px #fafafa;
+    text-align: center;
+}
+
+.contenedor-juego {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #a5d610;
+    border: 3px solid #004225;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #fafafa;
+}
+
+.contenedor-puntaje {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-family: "Hanalei Fill";
+    font-weight: 100;
+}
+
+.contenedor-puntaje p {
+    display: flex;
+}
+
+#combo {
+    width: 20px;
+    margin-right: 20px;
+}
+
+#puntaje {
+    margin-left: 15px;
+}
+
+#boton-ayuda,
+#boton-reiniciar {
+    background-color: transparent;
+    border: 0;
+    padding: 5px;
+    color: #424242;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#boton-reiniciar i {
+    transform: rotate(0);
+    transition: 0.2s;
+}
+
+.caja-grilla {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #004225;
+    background-color: #42424280;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    box-sizing: content-box;
+}
+
+#grilla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+#grilla div {
+    margin: 1px;
+    box-sizing: content-box;
+    padding: 1px;
 }
 
 

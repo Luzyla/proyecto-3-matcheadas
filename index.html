@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Proyecto MatcheADAs: Belu, Rosy & Lu</title>
+    <title>Proyecto MatcheADAs: Rosy & Lu</title>
 
 </head>
 
 <body>
 
-    <section class="overlay-inicio">
+    <section class="overlay-inicio oculto">
 
         <div class="contenedor-bienvenida" id="bienvenida-modal" role="dialog">
 
-            <h2 class="titulo-bienvenida">¡Bienvenida!</h2>
+            <h2 class="titulo-bienvenida">¡Bienvenid@!</h2>
             <div class="contenedor-txt-bienvenida">
                 <p class="txt-bienvenida">En MatcheADAs tu objetivo es juntar tres o más ítems del mismo tipo, ya sea en fila o columna. Para eso, selecciona un ítem y a continuación un ítem adyacente para intercambiarlos de lugar.</p>
                 <p class="txt-bienvenida">Si se forma un grupo, esos ítems se eliminarán y ganarás puntos. ¡Sigue armando grupos de 3 o más antes de que se acabe el tiempo!</p>
@@ -27,9 +28,24 @@
                 <p class="txt-controles">Enter o Espacio: selección</p>
                 <p class="txt-controles">Flechas o WASD: movimiento e intercambio</p>
 
-                <button type="button" class="boton-basico" id="boton-comenzar">Comienza!</button>
+                <button type="button" class="boton-basico" id="boton-comenzar">A Jugar!</button>
 
             </div>
+
+        </div>
+
+    </section>
+
+    <section class="overlay-niveles">
+
+        <div class="contenedor-niveles">
+
+            <h2 class="titulo-niveles">Nuevo Juego</h2>
+            <p class="txt-controles">Selecciona el nivel de juego para poder comenzar a jugar!</p>
+
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-facil"><span class="size-emoji">🦉 </span> Fácil</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-intermedio"><span class="size-emoji">🐵 </span>Intermedio</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-dificil"><span class="size-emoji">🦁 </span>Difícil</button>
 
 
 
@@ -37,9 +53,9 @@
 
     </section>
 
-    <section class="overlay-reinicio">
+    <section class="overlay-reinicio oculto">
 
-        <div class="msg-reinicio-juego" id="mensaje-reinicio-juego" role="dialog">
+        <div class="contenedor-reinicio">
             <h2 class="pregunta-nuevo-juego">Jugar de nuevo?</h2>
             <div class="contenedor-mensaje-nuevo-juego">
                 <p class="txt-nuevo-juego">Perderás todo tu puntaje acumulado!</p>
@@ -53,13 +69,14 @@
         </div>
     </section>
 
-    <section class="seccion-principal contenedor-fondo">
+    <section class="seccion-principal">
         <h1 class="nombre-juego">MatcheADAS</h1>
-        <div class="caja-combo">
-            <div class="contenedor-puntaje">
-                <p>"Combo X"<span id="combo">1</span></p>
 
-                <p>"Puntos: "<span id="puntaje" class="puntaje">0</span></p>
+        <div class="contenedor-juego">
+            <div class="contenedor-puntaje">
+                <p>Combo x<span id="combo">1</span></p>
+
+                <p>Puntos: <span id="puntaje" class="puntaje">0</span></p>
             </div>
 
             <div>
@@ -74,8 +91,8 @@
         </div>
 
         <div class="caja-grilla">
-            <!-- <div id="grillas"></div> -->
 
+            <!-- Grilla se arma en JS -->
 
         </div>
 
@@ -85,6 +102,10 @@
         </div>
 
     </section>
+
+    <footer class="oculto">
+        <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+    </footer>
 
 
 
