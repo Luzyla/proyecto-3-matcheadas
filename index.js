@@ -5,6 +5,8 @@ let botonNivelFacil = document.getElementById("boton-nivel-facil")
 let botonNivelIntermedio = document.getElementById("boton-nivel-intermedio")
 let botonNivelDificil = document.getElementById("boton-nivel-dificil")
 
+let overlayNiveles = document.querySelector(".overlay-niveles")
+
 botonComenzar.onclick = () => {
     overlayInicio.classList.add("fuera-de-foco")
 }
@@ -48,12 +50,15 @@ const crearGrilla = (filas, columnas, array) => {
 
 botonNivelFacil.onclick = () => {
     crearGrilla(9, 9, items);
+    overlayNiveles.classList.add("fuera-de-foco")
 }
 
 botonNivelIntermedio.onclick = () => {
     crearGrilla(8, 8, items);
+    overlayNiveles.classList.add("fuera-de-foco")
 }
 
 botonNivelDificil.onclick = () => {
     crearGrilla(7, 7, items);
+    overlayNiveles.classList.add("fuera-de-foco")
 }
