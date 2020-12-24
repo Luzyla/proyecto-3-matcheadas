@@ -26,11 +26,9 @@ body {
 
 html,
 body {
-    /* height: 100vh; */
-    /* overflow: hidden; */
+    overflow: hidden;
     font-family: Oxygen;
     color: #004225;
-    /* text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa, -1px 1px #fafafa; */
 }
 
 
@@ -164,9 +162,9 @@ body {
 }
 
 .nombre-juego {
-    font-size: 55px;
+    font-size: 50px;
     font-family: "Hanalei Fill";
-    margin: 15px 0;
+    margin: 5px 0;
     color: #004225;
     text-shadow: 2px 2px 4px #fafafa;
     text-align: center;
@@ -205,14 +203,29 @@ body {
     margin-left: 15px;
 }
 
-#boton-ayuda,
+.img-input {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.contenedor-timer,
+.contenedor-refresh {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: "Hanalei Fill";
+    font-weight: 100;
+}
+
+#boton-info,
 #boton-reiniciar {
     background-color: transparent;
     border: 0;
     padding: 5px;
     color: #424242;
     font-size: 20px;
-    cursor: pointer;
 }
 
 #boton-reiniciar i {
@@ -243,6 +256,12 @@ body {
     margin: 1px;
     box-sizing: content-box;
     padding: 1px;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 
