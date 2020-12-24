@@ -1,4 +1,9 @@
+let botonComenzar = document.getElementById("boton-comenzar")
+let overlayInicio = document.querySelector(".overlay-inicio")
 
+botonComenzar.onclick = () => {
+    overlayInicio.classList.add("fuera-de-foco")
+}
 
 const grilla = document.querySelector(".caja-grilla")
 const items = ['🐯', '🦉', '🦋', '🕷', '🐊', '🦍', '🦜', '🦨', '🦥', '🍄', '🍀'];
