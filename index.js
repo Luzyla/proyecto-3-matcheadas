@@ -26,29 +26,50 @@ const obtenerItemAlAzar = (array) => {
     return animal;
 };
 
-let primerCuadrado
-let segundoCuadrado
+let primerCuadrado;
+let segundoCuadrado;
 
+const sonAdyacentes = (primerItem, segundoItem) => {
+    let primerItemVertical = Number(primerItem.dataset.fila)
+    let primerItemHorizontal = Number(primerItem.dataset.columna)
+    let segundoItemVertical = Number(segundoItem.dataset.fila)
+    let segundoItemHorizontal = Number(segundoItem.dataset.columna)
 
-const selectItem = ()=>{
+    if (primerItemHorizontal === segundoItemHorizontal ||
+        primerItemVertical === segundoItemVertical
+    ) {
 
-const grillas = document.querySelectorAll("div#grilla")
-
-for (const items of grillas) {
-    items.onclick = (e) => {
-        if (!primerCuadrado) {
-            primerCuadrado = e.target
-            primerCuadrado.classList.add('select-item')
-        } else if (!segundoCuadrado ) {
-            segundoCuadrado = e.target
-            // son adyacentes function
-            primerCuadrado.classList.remove('select-item')
-            primerCuadrado = ''
-            segundoCuadrado =''
-        
+        if (primerItemVertical + 1 === segundoItemVertical ||
+            primerItemVertical - 1 === segundoItemVertical ||
+            primerItemHorizontal + 1 === segundoItemHorizontal ||
+            primerItemHorizontal - 1 === segundoItemHorizontal
+        ) {
+            return true;
         }
     }
-}
+    segundoCuadrado = ''
+    return false;
+
+};
+
+const selectItem = () => {
+    const grillas = document.querySelectorAll("div#grilla")
+
+    for (const items of grillas) {
+        items.onclick = (e) => {
+            if (!primerCuadrado) {
+                primerCuadrado = e.target
+                primerCuadrado.classList.add('select-item')
+            } else if (!segundoCuadrado) {
+                segundoCuadrado = e.target
+                if (sonAdyacentes(primerCuadrado, segundoCuadrado)) {
+                    primerCuadrado.classList.remove('select-item');
+                    primerCuadrado = ''
+                    segundoCuadrado = ''
+                }
+            }
+        }
+    }
 }
 
 
