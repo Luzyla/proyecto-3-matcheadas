@@ -226,8 +226,9 @@ body {
 }
 
 .caja-grilla {
+    position: relative;
     width: auto;
-    height: auto;
+    height: 510px;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #42424280;
@@ -238,10 +239,13 @@ body {
 }
 
 #grilla {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-size: 40px;
+    transition: top 5s, left 03s ;
 }
 
 #grilla div {

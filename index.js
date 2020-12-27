@@ -28,7 +28,39 @@ const obtenerItemAlAzar = (array) => {
 
 let primerCuadrado;
 let segundoCuadrado;
+const intercambiarCuadros = (elemento1, elemento2) => {
+   
+    
+    const item1 = document.querySelector(`div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`)
+    const item2 = document.querySelector(`div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`)
 
+    const tamanio =  parseFloat(item2.style.height)
+
+
+    
+    const datax1 = Number(item1.dataset.fila)
+    const datax2 = Number(item2.dataset.fila)
+    const datay1 = Number(item1.dataset.columna)
+    const datay2 = Number(item2.dataset.columna)
+
+
+console.log(datax1, datax2, datay1)
+
+    item1.style.top = `${datax2 * tamanio}px`
+    item2.style.top = `${datax1 * tamanio}px`
+    item1.style.left = `${datay2 * tamanio}px`
+    item2.style.left = `${datay1 * tamanio}px`
+
+
+    item1.dataset.fila = datax2
+    item2.dataset.fila = datax1
+    item1.dataset.columna = datay2
+    item2.dataset.columna = datay1
+
+
+
+
+}
 const sonAdyacentes = (primerItem, segundoItem) => {
     let primerItemVertical = Number(primerItem.dataset.fila)
     let primerItemHorizontal = Number(primerItem.dataset.columna)
@@ -59,13 +91,20 @@ const selectItem = () => {
         items.onclick = (e) => {
             if (!primerCuadrado) {
                 primerCuadrado = e.target
+                console.log(primerCuadrado)
                 primerCuadrado.classList.add('select-item')
             } else if (!segundoCuadrado) {
                 segundoCuadrado = e.target
+                console.log(segundoCuadrado)
                 if (sonAdyacentes(primerCuadrado, segundoCuadrado)) {
+
                     primerCuadrado.classList.remove('select-item');
+                    intercambiarCuadros(primerCuadrado, segundoCuadrado)
+                    console.log('primer intercambio ', primerCuadrado)
+                    console.log('segundo intercambio', segundoCuadrado)
                     primerCuadrado = ''
                     segundoCuadrado = ''
+
                 }
             }
         }
@@ -75,13 +114,8 @@ const selectItem = () => {
 
 
 
-
-
-
-
-
 const crearGrilla = (filas, columnas, array) => {
-    const anchoDeGrilla = 510 / columnas
+    const tamanioDeGrilla = 510 / columnas
     grilla.style.width = '510px'
     grilla.innerHTML = ''
     matriz = [];
@@ -93,8 +127,8 @@ const crearGrilla = (filas, columnas, array) => {
 
             grilla.innerHTML +=
                 `<div id="grilla"  
-            style="width:${anchoDeGrilla}px; height:${anchoDeGrilla}px;"  data-fila=${i} data-columna=${j} >
-            ${matriz[i][j]}
+            style="height:${tamanioDeGrilla}px;  top: ${tamanioDeGrilla * i}px; left: ${tamanioDeGrilla * j}px;"  data-fila=${i} data-columna=${j}  >
+            ${matriz[i][j]} 
             </div>`;
 
         }
