@@ -31,11 +31,11 @@ body {
     color: #004225;
 }
 
-
-.select-item{
+.select-item {
     border: 3px solid #fafafa;
     border-radius: 5px;
 }
+
 
 /*----------------------------------------------
             OVERLAY Y MODALES
@@ -169,7 +169,7 @@ body {
 .nombre-juego {
     font-size: 50px;
     font-family: "Hanalei Fill";
-    margin: 5px 0;
+    margin: 3px 0;
     color: #004225;
     text-shadow: 2px 2px 4px #fafafa;
     text-align: center;
@@ -179,7 +179,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background-color: #a5d610;
     border: 3px solid #004225;
     padding: 5px 10px;
@@ -211,8 +211,8 @@ body {
 .img-input,
 .info-button,
 .refresh-button {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -243,7 +243,7 @@ body {
 
 .caja-grilla {
     width: auto;
-    height: auto;
+    height: 505px;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #42424280;
@@ -257,13 +257,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 34px;
+    box-sizing: content-box;
 }
 
 #grilla div {
     margin: 1px;
     box-sizing: content-box;
-    padding: 1px;
 }
 
 .timer {

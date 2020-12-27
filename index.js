@@ -42,8 +42,7 @@ const sonAdyacentes = (primerItem, segundoItem) => {
         if (primerItemVertical + 1 === segundoItemVertical ||
             primerItemVertical - 1 === segundoItemVertical ||
             primerItemHorizontal + 1 === segundoItemHorizontal ||
-            primerItemHorizontal - 1 === segundoItemHorizontal
-        ) {
+            primerItemHorizontal - 1 === segundoItemHorizontal) {
             return true;
         }
     }
@@ -73,13 +72,6 @@ const selectItem = () => {
 }
 
 
-
-
-
-
-
-
-
 const crearGrilla = (filas, columnas, array) => {
     const anchoDeGrilla = 510 / columnas
     grilla.style.width = '510px'
@@ -103,9 +95,10 @@ const crearGrilla = (filas, columnas, array) => {
     return grilla;
 };
 
+crearGrilla(9, 9, items);
 
 botonNivelFacil.onclick = () => {
-    crearGrilla(9, 9, items);
+
     overlayNiveles.classList.add("fuera-de-foco")
 }
 
@@ -118,8 +111,3 @@ botonNivelDificil.onclick = () => {
     crearGrilla(7, 7, items);
     overlayNiveles.classList.add("fuera-de-foco")
 }
-
-
-
-
-
