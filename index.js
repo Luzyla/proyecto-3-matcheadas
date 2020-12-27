@@ -26,6 +26,38 @@ const obtenerItemAlAzar = (array) => {
     return animal;
 };
 
+let primerCuadrado
+let segundoCuadrado
+
+
+const selectItem = ()=>{
+
+const grillas = document.querySelectorAll("div#grilla")
+
+for (const items of grillas) {
+    items.onclick = (e) => {
+        if (!primerCuadrado) {
+            primerCuadrado = e.target
+            primerCuadrado.classList.add('select-item')
+        } else if (!segundoCuadrado ) {
+            segundoCuadrado = e.target
+            // son adyacentes function
+            primerCuadrado.classList.remove('select-item')
+            primerCuadrado = ''
+            segundoCuadrado =''
+        
+        }
+    }
+}
+}
+
+
+
+
+
+
+
+
 
 const crearGrilla = (filas, columnas, array) => {
     const anchoDeGrilla = 510 / columnas
@@ -40,17 +72,16 @@ const crearGrilla = (filas, columnas, array) => {
 
             grilla.innerHTML +=
                 `<div id="grilla"  
-            style="width:${anchoDeGrilla}px; height:${anchoDeGrilla}px;" 
-            data-fila=${i} data-columna=${j}>
+            style="width:${anchoDeGrilla}px; height:${anchoDeGrilla}px;"  data-fila=${i} data-columna=${j} >
             ${matriz[i][j]}
             </div>`;
 
         }
     }
+    selectItem();
     return grilla;
 };
 
-crearGrilla(9, 9, items);
 
 botonNivelFacil.onclick = () => {
     crearGrilla(9, 9, items);
@@ -66,3 +97,8 @@ botonNivelDificil.onclick = () => {
     crearGrilla(7, 7, items);
     overlayNiveles.classList.add("fuera-de-foco")
 }
+
+
+
+
+
