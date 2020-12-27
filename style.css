@@ -32,6 +32,11 @@ body {
 }
 
 
+.select-item{
+    border: 3px solid #fafafa;
+    border-radius: 5px;
+}
+
 /*----------------------------------------------
             OVERLAY Y MODALES
 ----------------------------------------------*/
