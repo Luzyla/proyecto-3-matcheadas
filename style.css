@@ -245,7 +245,7 @@ body {
     align-items: center;
     text-align: center;
     font-size: 40px;
-    transition: top 5s, left 03s ;
+    transition: top 0.3s, left 0.3s ;
 }
 
 #grilla div {
