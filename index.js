@@ -6,61 +6,111 @@ let botonNivelIntermedio = document.getElementById("boton-nivel-intermedio")
 let botonNivelDificil = document.getElementById("boton-nivel-dificil")
 
 let overlayNiveles = document.querySelector(".overlay-niveles")
+const grilla = document.querySelector(".caja-grilla")
+const items = ['🐯', '🦉', '🦋', '🐊', '🦍', '🦜', '🦨', '🦥', '🍄', '🍀'];
+let matriz = [];
+let primerCuadrado;
+let segundoCuadrado;
+
 
 botonComenzar.onclick = () => {
     overlayInicio.classList.add("fuera-de-foco")
 }
-
-const grilla = document.querySelector(".caja-grilla")
-const items = ['🐯', '🦉', '🦋', '🐊', '🦍', '🦜', '🦨', '🦥', '🍄', '🍀'];
-let matriz = [];
 
 const obtenerNumeroAlAzar = (array) => {
     let numero = Math.floor((Math.random() * array.length));
     return numero;
 };
 
-
 const obtenerItemAlAzar = (array) => {
     let animal = array[obtenerNumeroAlAzar(array)]
     return animal;
 };
 
-let primerCuadrado;
-let segundoCuadrado;
+const matchesVerticales = () => {
+    for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+
+            if (
+                matriz[i + 1] &&
+                matriz[i + 2] &&
+                matriz[i][j] === matriz[i + 1][j] &&
+                matriz[i][j] === matriz[i + 2][j]
+            ) {
+                matriz[i][j] = 'yellow'
+                matriz[i][j + 1] = 'yellow'
+                matriz[i][j + 2] = 'yellow'
+                return true
+            }
+        }
+    }
+
+    return false
+};
+
+const matchesHorizontales = () => {
+    for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+
+            if (
+                matriz[i][j] === matriz[i][j + 1] &&
+                matriz[i][j] === matriz[i][j + 2]
+            ) {
+                matriz[i][j] = 'yellow'
+                matriz[i][j + 1] = 'yellow'
+                matriz[i][j + 2] = 'yellow'
+                return true
+            }
+        }
+    }
+    return false
+};
+
+
+const hayMatches = () => {
+    if (matchesHorizontales() || matchesVerticales()) {
+        return true
+    }
+    else {
+        // alert('no hay matches')
+        return false
+    }
+
+}
+
+
+const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
+    const temp = matriz[x1][y1]
+    matriz[x1][y1] = matriz[x2][y2]
+    matriz[x2][y2] = temp
+
+};
+
 const intercambiarCuadros = (elemento1, elemento2) => {
-   
-    
+
     const item1 = document.querySelector(`div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`)
     const item2 = document.querySelector(`div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`)
+    const tamanio = parseFloat(item2.style.height)
 
-    const tamanio =  parseFloat(item2.style.height)
-
-
-    
     const datax1 = Number(item1.dataset.fila)
     const datax2 = Number(item2.dataset.fila)
     const datay1 = Number(item1.dataset.columna)
     const datay2 = Number(item2.dataset.columna)
-
-
-console.log(datax1, datax2, datay1)
 
     item1.style.top = `${datax2 * tamanio}px`
     item2.style.top = `${datax1 * tamanio}px`
     item1.style.left = `${datay2 * tamanio}px`
     item2.style.left = `${datay1 * tamanio}px`
 
-
     item1.dataset.fila = datax2
     item2.dataset.fila = datax1
     item1.dataset.columna = datay2
     item2.dataset.columna = datay1
-
-
-
-
+    intercambiarItemsEnArrayGrilla(datax2, datay2, datax1, datay1)
+    console.log(hayMatches())
 }
+
+
 const sonAdyacentes = (primerItem, segundoItem) => {
     let primerItemVertical = Number(primerItem.dataset.fila)
     let primerItemHorizontal = Number(primerItem.dataset.columna)
@@ -91,17 +141,12 @@ const selectItem = () => {
         items.onclick = (e) => {
             if (!primerCuadrado) {
                 primerCuadrado = e.target
-                console.log(primerCuadrado)
                 primerCuadrado.classList.add('select-item')
             } else if (!segundoCuadrado) {
                 segundoCuadrado = e.target
-                console.log(segundoCuadrado)
                 if (sonAdyacentes(primerCuadrado, segundoCuadrado)) {
-
                     primerCuadrado.classList.remove('select-item');
                     intercambiarCuadros(primerCuadrado, segundoCuadrado)
-                    console.log('primer intercambio ', primerCuadrado)
-                    console.log('segundo intercambio', segundoCuadrado)
                     primerCuadrado = ''
                     segundoCuadrado = ''
 
@@ -112,44 +157,61 @@ const selectItem = () => {
 }
 
 
-
-
-const crearGrilla = (filas, columnas, array) => {
-    const tamanioDeGrilla = 510 / columnas
-    grilla.style.width = '510px'
-    grilla.innerHTML = ''
-    matriz = [];
-
-    for (let i = 0; i < filas; i++) {
+const crearMatriz = (array, dimensiones) => {
+    matriz = []
+    for (let i = 0; i < dimensiones; i++) {
         matriz[i] = [];
-        for (let j = 0; j < columnas; j++) {
+        for (let j = 0; j < dimensiones; j++) {
             matriz[i][j] = obtenerItemAlAzar(array);
-
-            grilla.innerHTML +=
-                `<div id="grilla"  
-            style="height:${tamanioDeGrilla}px;  top: ${tamanioDeGrilla * i}px; left: ${tamanioDeGrilla * j}px;"  data-fila=${i} data-columna=${j}  >
-            ${matriz[i][j]} 
-            </div>`;
-
         }
     }
+
+}
+
+const dibujarGrillaHTML = (dimensiones) => {
+    const tamanio = 510 / dimensiones
+    grilla.style.width = '510px'
+    grilla.innerHTML = ''
+
+    for (let i = 0; i < dimensiones; i++) {
+        for (let j = 0; j < dimensiones; j++) {
+            grilla.innerHTML +=
+                `<div id="grilla"  
+                style="height:${tamanio}px;  top: ${tamanio * i}px; left: ${tamanio * j}px;"  data-fila=${i} data-columna=${j}  >
+                ${matriz[i][j]} 
+                </div>`;
+        }
+    }
+
+
+}
+
+const crearGrilla = (dimension, array) => {
+
+    crearMatriz(array, dimension)
+    dibujarGrillaHTML(dimension)
     selectItem();
-    return grilla;
+
 };
 
 
+do {
+    crearMatriz()
+} while (hayMatches())
+
+
 botonNivelFacil.onclick = () => {
-    crearGrilla(9, 9, items);
+    crearGrilla(9, items);
     overlayNiveles.classList.add("fuera-de-foco")
 }
 
 botonNivelIntermedio.onclick = () => {
-    crearGrilla(8, 8, items);
+    crearGrilla(8, items);
     overlayNiveles.classList.add("fuera-de-foco")
 }
 
 botonNivelDificil.onclick = () => {
-    crearGrilla(7, 7, items);
+    crearGrilla(7, items);
     overlayNiveles.classList.add("fuera-de-foco")
 }
 
