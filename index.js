@@ -144,6 +144,7 @@ const selectItem = () => {
                     }
                     primerCuadrado.classList.remove("select-item");
                     primerCuadrado = "";
+                    segundoCuadrado = ""
 
                 } else {
                     primerCuadrado.classList.remove("select-item");
