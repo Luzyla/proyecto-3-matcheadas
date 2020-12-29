@@ -182,7 +182,7 @@ body {
     margin-bottom: 5px;
     background-color: #a5d610;
     border: 3px solid #004225;
-    padding: 5px 10px;
+    padding: 3px 5px;
     border-radius: 10px;
     color: #fafafa;
 }
@@ -211,9 +211,19 @@ body {
 .img-input,
 .info-button,
 .refresh-button {
+    cursor: pointer;
+}
+
+.img-input {
+    width: 35px;
+    height: 35px;
+}
+
+.info-button,
+.refresh-button {
     width: 30px;
     height: 30px;
-    cursor: pointer;
+    margin-left: 8px;
 }
 
 .contenedor-timer,
@@ -227,7 +237,8 @@ body {
     flex-wrap: nowrap;
 }
 
-#boton-info,
+
+/* #boton-info,
 #boton-reiniciar {
     background-color: transparent;
     border: 0;
@@ -239,7 +250,7 @@ body {
 #boton-reiniciar i {
     transform: rotate(0);
     transition: 0.2s;
-}
+} */
 
 .caja-grilla {
     width: auto;
