@@ -122,7 +122,7 @@ const intercambiarCuadros = (elemento1, elemento2) => {
     item2.dataset.fila = datax1;
     item1.dataset.columna = datay2;
     item2.dataset.columna = datay1;
-    
+
 };
 
 const selectItem = () => {
@@ -144,6 +144,12 @@ const selectItem = () => {
                     }
                     primerCuadrado.classList.remove("select-item");
                     primerCuadrado = "";
+
+                } else {
+                    primerCuadrado.classList.remove("select-item");
+                    primerCuadrado = "";
+                    primerCuadrado = e.target
+                    primerCuadrado.classList.add("select-item");
                     segundoCuadrado = "";
                 }
             }
