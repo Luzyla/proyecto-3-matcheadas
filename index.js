@@ -90,6 +90,41 @@ const sonAdyacentes = (primerItem, segundoItem) => {
     return false;
 };
 
+const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
+    const temp = matriz[x1][y1];
+    matriz[x1][y1] = matriz[x2][y2];
+    matriz[x2][y2] = temp;
+
+};
+
+const intercambiarCuadros = (elemento1, elemento2) => {
+    const item1 = document.querySelector(
+        `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`
+    );
+    const item2 = document.querySelector(
+        `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`
+    );
+    const tamanio = parseFloat(item2.style.height);
+
+    const datax1 = Number(item1.dataset.fila);
+    const datax2 = Number(item2.dataset.fila);
+    const datay1 = Number(item1.dataset.columna);
+    const datay2 = Number(item2.dataset.columna);
+
+    intercambiarItemsEnArrayGrilla(datax2, datay2, datax1, datay1);
+
+    item1.style.top = `${datax2 * tamanio}px`;
+    item2.style.top = `${datax1 * tamanio}px`;
+    item1.style.left = `${datay2 * tamanio}px`;
+    item2.style.left = `${datay1 * tamanio}px`;
+
+    item1.dataset.fila = datax2;
+    item2.dataset.fila = datax1;
+    item1.dataset.columna = datay2;
+    item2.dataset.columna = datay1;
+
+};
+
 const selectItem = () => {
     const grillas = document.querySelectorAll("div#grilla");
 
@@ -103,12 +138,19 @@ const selectItem = () => {
                 if (sonAdyacentes(primerCuadrado, segundoCuadrado)) {
                     intercambiarCuadros(primerCuadrado, segundoCuadrado);
                     if (!hayMatches()) {
-                        intercambiarCuadros(primerCuadrado, segundoCuadrado);
-                        // segundoCuadrado = ''
-                        // return;
+                        setTimeout(() => intercambiarCuadros(primerCuadrado, e.target), 200)
+                        segundoCuadrado = "";
+                        return;
                     }
                     primerCuadrado.classList.remove("select-item");
                     primerCuadrado = "";
+                    segundoCuadrado = ""
+
+                } else {
+                    primerCuadrado.classList.remove("select-item");
+                    primerCuadrado = "";
+                    primerCuadrado = e.target
+                    primerCuadrado.classList.add("select-item");
                     segundoCuadrado = "";
                 }
             }
@@ -150,41 +192,6 @@ const crearGrilla = (dimension, array) => {
     selectItem();
 };
 
-
-
-const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
-    const temp = matriz[x1][y1];
-    matriz[x1][y1] = matriz[x2][y2];
-    matriz[x2][y2] = temp;
-
-};
-
-const intercambiarCuadros = (elemento1, elemento2) => {
-    const item1 = document.querySelector(
-        `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`
-    );
-    const item2 = document.querySelector(
-        `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`
-    );
-    const tamanio = parseFloat(item2.style.height);
-
-    const datax1 = Number(item1.dataset.fila);
-    const datax2 = Number(item2.dataset.fila);
-    const datay1 = Number(item1.dataset.columna);
-    const datay2 = Number(item2.dataset.columna);
-
-    item1.style.top = `${datax2 * tamanio}px`;
-    item2.style.top = `${datax1 * tamanio}px`;
-    item1.style.left = `${datay2 * tamanio}px`;
-    item2.style.left = `${datay1 * tamanio}px`;
-
-    item1.dataset.fila = datax2;
-    item2.dataset.fila = datax1;
-    item1.dataset.columna = datay2;
-    item2.dataset.columna = datay1;
-    intercambiarItemsEnArrayGrilla(datax2, datay2, datax1, datay1);
-
-};
 
 const grillaInicial = (dimension) => {
     do {
