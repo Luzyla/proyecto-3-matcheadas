@@ -26,6 +26,43 @@ const obtenerItemAlAzar = (array) => {
     return animal;
 };
 
+const generarCuadrado = (x, y) => {
+    return document.querySelector(`div[data-fila="${x}"][data-columna="${y}"]`)
+}
+
+
+let eliminarMatch = false
+const eliminarCombos = (numeroConstante, inicio, fin, orientacion) => {
+
+    if (eliminarMatch) {
+
+        switch (orientacion) {
+            case 'horizontal':
+                for (let i = inicio; i <= fin; i++) {
+                    generarCuadrado(i, numeroConstante).remove();
+                }
+                break;
+            case 'vertical':
+                for (let j = inicio; j <= fin; j++) {
+
+                    generarCuadrado(numeroConstante, j).remove();
+                }
+                break;
+            default: alert('ERROR: al eliminar matches')
+                break;
+        }
+
+    }
+    eliminarMatch = false
+
+}
+
+
+const rellenarEspaciosHTML = () => {
+
+}
+
+
 const matchesVerticales = () => {
     for (let i = 0; i < matriz.length; i++) {
         for (let j = 0; j < matriz[i].length; j++) {
@@ -35,7 +72,7 @@ const matchesVerticales = () => {
                 matriz[i][j] === matriz[i + 1][j] &&
                 matriz[i][j] === matriz[i + 2][j]
             ) {
-
+                eliminarCombos(j, i, i + 2, 'horizontal')
                 return true;
             }
         }
@@ -51,6 +88,8 @@ const matchesHorizontales = () => {
                 matriz[i][j] === matriz[i][j + 1] &&
                 matriz[i][j] === matriz[i][j + 2]
             ) {
+
+                eliminarCombos(i, j, j + 2, 'vertical')
                 return true;
             }
         }
@@ -83,6 +122,8 @@ const sonAdyacentes = (primerItem, segundoItem) => {
             primerItemHorizontal + 1 === segundoItemHorizontal ||
             primerItemHorizontal - 1 === segundoItemHorizontal
         ) {
+            eliminarMatch = true;
+            // eliminarCombos(i, j, j + 2, 'horizontal')
             return true;
         }
     }
@@ -99,11 +140,9 @@ const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
 
 const intercambiarCuadros = (elemento1, elemento2) => {
     const item1 = document.querySelector(
-        `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`
-    );
+        `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`);
     const item2 = document.querySelector(
-        `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`
-    );
+        `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`);
     const tamanio = parseFloat(item2.style.height);
 
     const datax1 = Number(item1.dataset.fila);
@@ -145,6 +184,7 @@ const selectItem = () => {
                     primerCuadrado.classList.remove("select-item");
                     primerCuadrado = "";
                     segundoCuadrado = ""
+                    // eliminarCombos(i, j, j + 2, 'horizontal')
 
                 } else {
                     primerCuadrado.classList.remove("select-item");
@@ -169,6 +209,9 @@ const crearMatriz = (array, dimensiones) => {
 };
 
 const actualizarMatriz = () => { };
+
+
+
 
 const dibujarGrillaHTML = (dimensiones) => {
     const tamanio = 510 / dimensiones;
