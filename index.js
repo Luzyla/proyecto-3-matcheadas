@@ -26,42 +26,111 @@ const obtenerItemAlAzar = (array) => {
     return animal;
 };
 
-const generarCuadrado = (x, y) => {
-    return document.querySelector(`div[data-fila="${x}"][data-columna="${y}"]`)
-}
+const seleccionarCuadrado = (x, y) => {
+    return document.querySelector(`div[data-fila="${x}"][data-columna="${y}"]`);
+};
+
+const generarCuadrado = (tamanio, x, y) => {
+    return (grilla.innerHTML += `<div id="grilla"  
+    style="height:${tamanio}px;  top: ${tamanio * x}px; left: ${tamanio * y
+        }px;" 
+    data-fila=${x} data-columna=${y}> ${matriz[x][y]} </div>`);
+};
+let tamanio = 0;
+const rellenarEspaciosHTML = (item, x, y) => {
+
+    for (let i = matriz.length - 1; i >= 0; i--) {
+        for (let j = matriz.length - 1; j >= 0; j--) {
+            let cuadroArriba = document.querySelector(
+                `div[data-fila="${x - 1}"][data-columna="${y}"]`);
+
+            if (!cuadroArriba && x != 0) {
 
 
-let eliminarMatch = false
+                for (let l = x; l >= 0; l--) {
+                    cuadroArriba = document.querySelector(
+                        `div[data-fila="${l}"][data-columna="${y}"]`);
+                    if (cuadroArriba) {
+                        cuadroArriba.style.top = `${tamanio * x}px`;
+                        cuadroArriba.dataset.fila = `${x}`;
+                        cuadroArriba.dataset.columna = `${y}`;
+                        return
+                    }
+                }
+                // tamanio = parseFloat(cuadroArriba.style.height);
+                // cuadroArriba.style.top = `${tamanio * x}px`;
+                // cuadroArriba.dataset.fila = `${x}`;
+                // cuadroArriba.dataset.columna = `${y}`;
+                return;
+            } else if (cuadroArriba) {
+                // tamanio = parseFloat(cuadroArriba.style.height);
+                cuadroArriba.style.top = `${tamanio * x}px`;
+                cuadroArriba.dataset.fila = `${x}`;
+                cuadroArriba.dataset.columna = `${y}`;
+                return;
+            } else if ((x - 1) == 0 || x == 0 || !cuadroArriba && x != 0) {
+
+                // for (let k = 0; k < array.length; k++) {
+
+
+                // }
+
+                // tamanio = parseFloat(item.style.height);
+                generarCuadrado(tamanio, x, y);
+                return
+            }
+
+
+
+
+
+            // if (cuadroArriba) {
+            //     tamanio = parseFloat(cuadroArriba.style.height);
+            //     cuadroArriba.style.top = `${tamanio * x}px`;
+            //     cuadroArriba.dataset.fila = `${i}`;
+            //     cuadroArriba.dataset.columna = `${j}`;
+            // } else {
+            //     tamanio = parseFloat(cuadroArriba.style.height);
+            //     generarCuadrado(tamanio, i, j);
+            // }
+        }
+    }
+};
+
+const encontrarEspaciosHTML = () => {
+    for (let i = matriz.length - 1; i >= 0; i--) {
+        for (let j = matriz.length - 1; j >= 0; j--) {
+            const cuadrado = seleccionarCuadrado(i, j);
+            if (cuadrado == null) {
+                rellenarEspaciosHTML(cuadrado, i, j);
+            }
+        }
+    }
+};
+
+let eliminarMatch = false;
 const eliminarCombos = (numeroConstante, inicio, fin, orientacion) => {
-
     if (eliminarMatch) {
-
         switch (orientacion) {
-            case 'horizontal':
+            case "horizontal":
                 for (let i = inicio; i <= fin; i++) {
-                    generarCuadrado(i, numeroConstante).remove();
+                    seleccionarCuadrado(i, numeroConstante).remove();
                 }
+                encontrarEspaciosHTML();
                 break;
-            case 'vertical':
+            case "vertical":
                 for (let j = inicio; j <= fin; j++) {
-
-                    generarCuadrado(numeroConstante, j).remove();
+                    seleccionarCuadrado(numeroConstante, j).remove();
                 }
+                encontrarEspaciosHTML();
                 break;
-            default: alert('ERROR: al eliminar matches')
+            default:
+                alert("ERROR: al eliminar matches");
                 break;
         }
-
     }
-    eliminarMatch = false
-
-}
-
-
-const rellenarEspaciosHTML = () => {
-
-}
-
+    eliminarMatch = false;
+};
 
 const matchesVerticales = () => {
     for (let i = 0; i < matriz.length; i++) {
@@ -72,7 +141,7 @@ const matchesVerticales = () => {
                 matriz[i][j] === matriz[i + 1][j] &&
                 matriz[i][j] === matriz[i + 2][j]
             ) {
-                eliminarCombos(j, i, i + 2, 'horizontal')
+                eliminarCombos(j, i, i + 2, "horizontal");
                 return true;
             }
         }
@@ -88,8 +157,7 @@ const matchesHorizontales = () => {
                 matriz[i][j] === matriz[i][j + 1] &&
                 matriz[i][j] === matriz[i][j + 2]
             ) {
-
-                eliminarCombos(i, j, j + 2, 'vertical')
+                eliminarCombos(i, j, j + 2, "vertical");
                 return true;
             }
         }
@@ -135,15 +203,16 @@ const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
     const temp = matriz[x1][y1];
     matriz[x1][y1] = matriz[x2][y2];
     matriz[x2][y2] = temp;
-
 };
 
 const intercambiarCuadros = (elemento1, elemento2) => {
     const item1 = document.querySelector(
-        `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`);
+        `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`
+    );
     const item2 = document.querySelector(
-        `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`);
-    const tamanio = parseFloat(item2.style.height);
+        `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`
+    );
+    tamanio = parseFloat(item2.style.height);
 
     const datax1 = Number(item1.dataset.fila);
     const datax2 = Number(item2.dataset.fila);
@@ -161,7 +230,6 @@ const intercambiarCuadros = (elemento1, elemento2) => {
     item2.dataset.fila = datax1;
     item1.dataset.columna = datay2;
     item2.dataset.columna = datay1;
-
 };
 
 const selectItem = () => {
@@ -177,19 +245,21 @@ const selectItem = () => {
                 if (sonAdyacentes(primerCuadrado, segundoCuadrado)) {
                     intercambiarCuadros(primerCuadrado, segundoCuadrado);
                     if (!hayMatches()) {
-                        setTimeout(() => intercambiarCuadros(primerCuadrado, e.target), 200)
+                        setTimeout(
+                            () => intercambiarCuadros(primerCuadrado, e.target),
+                            200
+                        );
                         segundoCuadrado = "";
                         return;
                     }
                     primerCuadrado.classList.remove("select-item");
                     primerCuadrado = "";
-                    segundoCuadrado = ""
+                    segundoCuadrado = "";
                     // eliminarCombos(i, j, j + 2, 'horizontal')
-
                 } else {
                     primerCuadrado.classList.remove("select-item");
                     primerCuadrado = "";
-                    primerCuadrado = e.target
+                    primerCuadrado = e.target;
                     primerCuadrado.classList.add("select-item");
                     segundoCuadrado = "";
                 }
@@ -210,9 +280,6 @@ const crearMatriz = (array, dimensiones) => {
 
 const actualizarMatriz = () => { };
 
-
-
-
 const dibujarGrillaHTML = (dimensiones) => {
     const tamanio = 510 / dimensiones;
     grilla.style.width = "510px";
@@ -230,11 +297,9 @@ const dibujarGrillaHTML = (dimensiones) => {
 };
 
 const crearGrilla = (dimension, array) => {
-
     dibujarGrillaHTML(dimension);
     selectItem();
 };
-
 
 const grillaInicial = (dimension) => {
     do {
