@@ -12,6 +12,7 @@ const items = ["🐯", "🦉", "🦋", "🐊", "🦍", "🦜", "🦨", "🦥", "
 let matriz = [];
 let primerCuadrado;
 let segundoCuadrado;
+let eliminarMatch = false;
 
 botonComenzar.onclick = () => {
   overlayInicio.classList.add("fuera-de-foco");
@@ -38,53 +39,49 @@ const moverCuadrado = (item, x, y) => {
 };
 
 const generarCuadrado = (tamanio, x, y) => {
-  grilla.innerHTML += `<div id="grilla"  
-    style="height:${tamanio}px;  top: ${tamanio * -1}px; left: ${tamanio * y
-    }px;"  data-fila=${x} data-columna=${y}> ${obtenerItemAlAzar(items)} </div>`;
-  const cuadro = document.querySelector(
-    `div[data-fila="${x}"][data-columna="${y}"]`
-  );
-  cuadro.addEventListener('click', selectItem)
-  moverCuadrado(cuadro, x, y);
-  return cuadro;
+
+  const cuadrado = document.createElement('div')
+  grilla.appendChild(cuadrado)
+  cuadrado.dataset.fila = `${x}`
+  cuadrado.dataset.columna = `${y}`
+  cuadrado.style.height = `${tamanio}px`
+  cuadrado.style.top = `${tamanio * -1}px`
+  cuadrado.style.left = `${tamanio * y}px`
+  cuadrado.setAttribute("id", "grilla");
+  cuadrado.innerHTML = obtenerItemAlAzar(items)
+  cuadrado.addEventListener('click', selectItem)
+  moverCuadrado(cuadrado, x, y);
+
+  return cuadrado;
 };
 
 let tamanio = 0;
 const rellenarEspaciosHTML = (item, x, y) => {
-  let cuadroArriba = document.querySelector(
-    `div[data-fila="${x - 1}"][data-columna="${y}"]`
-  );
+  let cuadroArriba = document.querySelector(`div[data-fila="${x - 1}"][data-columna="${y}"]`);
 
   if (!cuadroArriba && x != 0) {
     for (let l = x; l >= 0; l--) {
-      cuadroArriba = document.querySelector(
-        `div[data-fila="${l}"][data-columna="${y}"]`
-      );
+      cuadroArriba = seleccionarCuadrado(l, y);
+
       if (cuadroArriba) {
-        // setTimeout(
-        //   () => moverCuadrado(cuadroArriba, x, y),
-        //   200
-        // );
-        cuadroArriba.style.top = `${tamanio * x}px`;
-        cuadroArriba.dataset.fila = `${x}`;
-        cuadroArriba.dataset.columna = `${y}`;
+        moverCuadrado(cuadroArriba, x, y)
         return;
       }
     }
-    // generarCuadrado(tamanio, x, y);
+    setTimeout(() => generarCuadrado(tamanio, x, y), 800);
+
     return;
   } else if (cuadroArriba) {
-    cuadroArriba.style.top = `${tamanio * x}px`;
-    cuadroArriba.dataset.fila = `${x}`;
-    cuadroArriba.dataset.columna = `${y}`;
-    // setTimeout(
-    //   () => moverCuadrado(cuadroArriba, x, y),
-    //   200
-    // );
+
+    moverCuadrado(cuadroArriba, x, y)
+
     return;
   } else if (x - 1 == 0 || x == 0 || (!cuadroArriba && x != 0)) {
-    generarCuadrado(tamanio, x, y);
-    encontrarEspaciosHTML();
+    setTimeout(
+      () => generarCuadrado(tamanio, x, y),
+      600
+    );
+
     return;
   }
 };
@@ -94,62 +91,34 @@ const encontrarEspaciosHTML = () => {
     for (let j = matriz.length - 1; j >= 0; j--) {
       const cuadrado = seleccionarCuadrado(i, j);
       if (cuadrado == null) {
-        // setTimeout(
-        //   () => rellenarEspaciosHTML(cuadrado, i, j),
-        //   1000
-        // );
+
         rellenarEspaciosHTML(cuadrado, i, j);
-        // return true;
+
       }
     }
   }
   return true;
 };
 
-let eliminarMatch = false;
+
 const eliminarCombos = () => {
-  let grillas = document.querySelectorAll("div#grilla");
+  const grillas = document.querySelectorAll("div#grilla");
   if (eliminarMatch) {
 
     for (const item of grillas) {
       if (item.classList.contains('match')) {
-        item.remove();
+        item.classList.remove('match');
+        grilla.removeChild(item)
 
       }
-
     }
     setTimeout(() => encontrarEspaciosHTML(), 200);
 
-
-
-    // switch (orientacion) {
-    //   case "horizontal":
-    //     for (let i = inicio; i <= fin; i++) {
-    //       seleccionarCuadrado(i, numeroConstante).remove();
-    //     }
-    //     setTimeout(() => encontrarEspaciosHTML(), 200);
-
-    //     break;
-    //   case "vertical":
-    //     for (let j = inicio; j <= fin; j++) {
-    //       seleccionarCuadrado(numeroConstante, j).remove();
-    //     }
-    //     setTimeout(() => encontrarEspaciosHTML(), 200);
-    //     break;
-    //   default:
-    //     alert("ERROR: al eliminar matches");
-    //     break;
-    // }
+    eliminarMatch = false
+    return true
   }
-  // if (hayMatches) {
-  //   eliminarMatch = true
-  // } else {
-  //   eliminarMatch = false;
-  // }
-  eliminarMatch = false
-  return true
 };
-debugger
+
 const matchesVerticales = () => {
   for (let i = 0; i < matriz.length; i++) {
     for (let j = 0; j < matriz[i].length; j++) {
@@ -159,11 +128,7 @@ const matchesVerticales = () => {
         matriz[i][j] === matriz[i + 1][j] &&
         matriz[i][j] === matriz[i + 2][j]
       ) {
-        // primerCuadrado.classList.remove("select-item");
-        // primerCuadrado = "";
-        // segundoCuadrado = "";
-        // selectItem()
-        // eliminarCombos(j, i, i + 2, "horizontal");
+
         if (eliminarMatch) {
           seleccionarCuadrado(i, j).classList.add('match')
           seleccionarCuadrado(i + 1, j).classList.add('match')
@@ -172,6 +137,7 @@ const matchesVerticales = () => {
         return true;
       }
     }
+
   }
 
   return false;
@@ -184,11 +150,7 @@ const matchesHorizontales = () => {
         matriz[i][j] === matriz[i][j + 1] &&
         matriz[i][j] === matriz[i][j + 2]
       ) {
-        // selectItem()
-        // primerCuadrado.classList.remove("select-item");
-        // primerCuadrado = "";
-        // segundoCuadrado = "";
-        // eliminarCombos(i, j, j + 2, "vertical");
+
         if (eliminarMatch) {
           seleccionarCuadrado(i, j).classList.add('match')
           seleccionarCuadrado(i, j + 1).classList.add('match')
@@ -227,7 +189,6 @@ const sonAdyacentes = (primerItem, segundoItem) => {
       primerItemHorizontal - 1 === segundoItemHorizontal
     ) {
       eliminarMatch = true;
-      // eliminarCombos(i, j, j + 2, 'horizontal')
       return true;
     }
   }
@@ -268,7 +229,7 @@ const intercambiarCuadros = (elemento1, elemento2) => {
   item2.dataset.columna = datay1;
 };
 
-// console.log(grillas)
+
 const selectItem = () => {
   let grillas = document.querySelectorAll("div#grilla");
   for (const items of grillas) {
@@ -286,13 +247,12 @@ const selectItem = () => {
           if (!hayMatches()) {
             setTimeout(() => intercambiarCuadros(primerCuadrado, e.target), 500);
             segundoCuadrado = "";
-            // return;
+
           } else {
             eliminarCombos();
             primerCuadrado.classList.remove("select-item");
             primerCuadrado = "";
             segundoCuadrado = "";
-            // eliminarCombos()
           }
 
         } else {
