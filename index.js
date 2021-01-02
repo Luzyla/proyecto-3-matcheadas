@@ -7,6 +7,7 @@ let botonNivelDificil = document.getElementById("boton-nivel-dificil");
 
 let overlayNiveles = document.querySelector(".overlay-niveles");
 const grilla = document.querySelector(".caja-grilla");
+
 const items = ["🐯", "🦉", "🦋", "🐊", "🦍", "🦜", "🦨", "🦥", "🍄", "🍀"];
 let matriz = [];
 let primerCuadrado;
@@ -38,13 +39,12 @@ const moverCuadrado = (item, x, y) => {
 
 const generarCuadrado = (tamanio, x, y) => {
   grilla.innerHTML += `<div id="grilla"  
-    style="height:${tamanio}px;  top: ${tamanio * -1}px; left: ${
-    tamanio * y
-  }px;" 
-     data-fila=${x} data-columna=${y}> ${obtenerItemAlAzar(items)} </div>`;
+    style="height:${tamanio}px;  top: ${tamanio * -1}px; left: ${tamanio * y
+    }px;"  data-fila=${x} data-columna=${y}> ${obtenerItemAlAzar(items)} </div>`;
   const cuadro = document.querySelector(
     `div[data-fila="${x}"][data-columna="${y}"]`
   );
+  cuadro.addEventListener('click', selectItem)
   moverCuadrado(cuadro, x, y);
   return cuadro;
 };
@@ -103,36 +103,53 @@ const encontrarEspaciosHTML = () => {
       }
     }
   }
-  return false;
+  return true;
 };
 
 let eliminarMatch = false;
-const eliminarCombos = (numeroConstante, inicio, fin, orientacion) => {
+const eliminarCombos = () => {
+  let grillas = document.querySelectorAll("div#grilla");
   if (eliminarMatch) {
-    switch (orientacion) {
-      case "horizontal":
-        for (let i = inicio; i <= fin; i++) {
-          seleccionarCuadrado(i, numeroConstante).remove();
-        }
-        setTimeout(() => encontrarEspaciosHTML(), 500);
-        // encontrarEspaciosHTML();
-        break;
-      case "vertical":
-        for (let j = inicio; j <= fin; j++) {
-          seleccionarCuadrado(numeroConstante, j).remove();
-        }
 
-        setTimeout(() => encontrarEspaciosHTML(), 500);
-        // encontrarEspaciosHTML();
-        break;
-      default:
-        alert("ERROR: al eliminar matches");
-        break;
+    for (const item of grillas) {
+      if (item.classList.contains('match')) {
+        item.remove();
+
+      }
+
     }
-  }
-  eliminarMatch = false;
-};
+    setTimeout(() => encontrarEspaciosHTML(), 200);
 
+
+
+    // switch (orientacion) {
+    //   case "horizontal":
+    //     for (let i = inicio; i <= fin; i++) {
+    //       seleccionarCuadrado(i, numeroConstante).remove();
+    //     }
+    //     setTimeout(() => encontrarEspaciosHTML(), 200);
+
+    //     break;
+    //   case "vertical":
+    //     for (let j = inicio; j <= fin; j++) {
+    //       seleccionarCuadrado(numeroConstante, j).remove();
+    //     }
+    //     setTimeout(() => encontrarEspaciosHTML(), 200);
+    //     break;
+    //   default:
+    //     alert("ERROR: al eliminar matches");
+    //     break;
+    // }
+  }
+  // if (hayMatches) {
+  //   eliminarMatch = true
+  // } else {
+  //   eliminarMatch = false;
+  // }
+  eliminarMatch = false
+  return true
+};
+debugger
 const matchesVerticales = () => {
   for (let i = 0; i < matriz.length; i++) {
     for (let j = 0; j < matriz[i].length; j++) {
@@ -142,7 +159,16 @@ const matchesVerticales = () => {
         matriz[i][j] === matriz[i + 1][j] &&
         matriz[i][j] === matriz[i + 2][j]
       ) {
-        eliminarCombos(j, i, i + 2, "horizontal");
+        // primerCuadrado.classList.remove("select-item");
+        // primerCuadrado = "";
+        // segundoCuadrado = "";
+        // selectItem()
+        // eliminarCombos(j, i, i + 2, "horizontal");
+        if (eliminarMatch) {
+          seleccionarCuadrado(i, j).classList.add('match')
+          seleccionarCuadrado(i + 1, j).classList.add('match')
+          seleccionarCuadrado(i + 2, j).classList.add('match')
+        }
         return true;
       }
     }
@@ -158,7 +184,16 @@ const matchesHorizontales = () => {
         matriz[i][j] === matriz[i][j + 1] &&
         matriz[i][j] === matriz[i][j + 2]
       ) {
-        eliminarCombos(i, j, j + 2, "vertical");
+        // selectItem()
+        // primerCuadrado.classList.remove("select-item");
+        // primerCuadrado = "";
+        // segundoCuadrado = "";
+        // eliminarCombos(i, j, j + 2, "vertical");
+        if (eliminarMatch) {
+          seleccionarCuadrado(i, j).classList.add('match')
+          seleccionarCuadrado(i, j + 1).classList.add('match')
+          seleccionarCuadrado(i, j + 2).classList.add('match')
+        }
         return true;
       }
     }
@@ -233,30 +268,33 @@ const intercambiarCuadros = (elemento1, elemento2) => {
   item2.dataset.columna = datay1;
 };
 
+// console.log(grillas)
 const selectItem = () => {
-  const grillas = document.querySelectorAll("div#grilla");
-
+  let grillas = document.querySelectorAll("div#grilla");
   for (const items of grillas) {
     items.onclick = (e) => {
+
       if (!primerCuadrado) {
         primerCuadrado = e.target;
         primerCuadrado.classList.add("select-item");
       } else if (!segundoCuadrado) {
         segundoCuadrado = e.target;
+
         if (sonAdyacentes(primerCuadrado, segundoCuadrado)) {
           intercambiarCuadros(primerCuadrado, segundoCuadrado);
+
           if (!hayMatches()) {
-            setTimeout(
-              () => intercambiarCuadros(primerCuadrado, e.target),
-              200
-            );
+            setTimeout(() => intercambiarCuadros(primerCuadrado, e.target), 500);
             segundoCuadrado = "";
-            return;
+            // return;
+          } else {
+            eliminarCombos();
+            primerCuadrado.classList.remove("select-item");
+            primerCuadrado = "";
+            segundoCuadrado = "";
+            // eliminarCombos()
           }
-          primerCuadrado.classList.remove("select-item");
-          primerCuadrado = "";
-          segundoCuadrado = "";
-          // eliminarCombos(i, j, j + 2, 'horizontal')
+
         } else {
           primerCuadrado.classList.remove("select-item");
           primerCuadrado = "";
@@ -279,8 +317,6 @@ const crearMatriz = (array, dimensiones) => {
   }
 };
 
-const actualizarMatriz = () => {};
-
 const dibujarGrillaHTML = (dimensiones) => {
   const tamanio = 510 / dimensiones;
   grilla.style.width = "510px";
@@ -289,9 +325,8 @@ const dibujarGrillaHTML = (dimensiones) => {
   for (let i = 0; i < dimensiones; i++) {
     for (let j = 0; j < dimensiones; j++) {
       grilla.innerHTML += `<div id="grilla"  
-                style="height:${tamanio}px;  top: ${tamanio * i}px; left: ${
-        tamanio * j
-      }px;"  data-fila=${i} data-columna=${j}  >
+                style="height:${tamanio}px;  top: ${tamanio * i}px; left: ${tamanio * j
+        }px;"  data-fila=${i} data-columna=${j}  >
                 ${matriz[i][j]} 
                 </div>`;
     }
