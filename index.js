@@ -21,7 +21,6 @@ let overlayRefresh = document.querySelector(".overlay-reinicio")
 let botonCancelar = document.getElementById("boton-cancelar")
 let botonNuevoJuego = document.getElementById("boton-nuevo-juego")
 
-
 botonInfo.onclick = () => {
     overlayInicio.classList.remove("fuera-de-foco");
 }
@@ -42,7 +41,6 @@ botonNuevoJuego.onclick = () => {
     overlayRefresh.classList.add("fuera-de-foco");
     overlayNiveles.classList.remove("fuera-de-foco");
 }
-
 
 const obtenerNumeroAlAzar = (array) => {
     let numero = Math.floor(Math.random() * array.length);
