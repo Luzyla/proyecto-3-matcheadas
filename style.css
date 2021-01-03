@@ -254,6 +254,8 @@ body {
 
 .caja-grilla {
     position: relative;
+    width: 610px;
+    height: 510px;
     width: auto;
     height: 505px;
     border-radius: 10px;
@@ -273,7 +275,7 @@ body {
     font-size: 34px;
     box-sizing: content-box;
     text-align: center;
-    transition: top 0.3s, left 0.3s;
+    transition: top 0.08s, left 0.08s;
 }
 
 #grilla div {
