@@ -32,14 +32,18 @@ const seleccionarCuadrado = (x, y) => {
   return document.querySelector(`div[data-fila="${x}"][data-columna="${y}"]`);
 };
 
+
+
 const moverCuadrado = (item, x, y) => {
   item.style.top = `${tamanio * x}px`;
   item.dataset.fila = `${x}`;
   item.dataset.columna = `${y}`;
+  matriz[x][y] = seleccionarCuadrado(x,y).innerHTML.trim()
+
 };
 
 const generarCuadrado = (tamanio, x, y) => {
-
+  let emoji = obtenerItemAlAzar(items)
   const cuadrado = document.createElement('div')
   grilla.appendChild(cuadrado)
   cuadrado.dataset.fila = `${x}`
@@ -48,9 +52,10 @@ const generarCuadrado = (tamanio, x, y) => {
   cuadrado.style.top = `${tamanio * -1}px`
   cuadrado.style.left = `${tamanio * y}px`
   cuadrado.setAttribute("id", "grilla");
-  cuadrado.innerHTML = obtenerItemAlAzar(items)
+  cuadrado.innerHTML = emoji
   cuadrado.addEventListener('click', selectItem)
   moverCuadrado(cuadrado, x, y);
+  matriz[x][y] = emoji
 
   return cuadrado;
 };
@@ -84,20 +89,12 @@ const rellenarEspaciosHTML = (item, x, y) => {
   } else if (cuadroArriba) {
 
     moverCuadrado(cuadroArriba, x, y)
-
-const crearGrilla = (filas, columnas, array) => {
-    const anchoDeGrilla = 510 / columnas
-    grilla.style.width = '510px'
-    grilla.innerHTML = ''
-    matriz = [];
-
     return;
   } else if (x - 1 == 0 || x == 0 || (!cuadroArriba && x != 0)) {
     setTimeout(
       () => generarCuadrado(tamanio, x, y),
       600
     );
-
     return;
   }
 };
@@ -318,6 +315,7 @@ const dibujarGrillaHTML = (dimensiones) => {
                 </div>`;
     }
   }
+
 };
 
 const crearGrilla = (dimension, array) => {
