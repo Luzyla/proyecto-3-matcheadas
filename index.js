@@ -55,6 +55,16 @@ const generarCuadrado = (tamanio, x, y) => {
   return cuadrado;
 };
 
+//         if (primerItemVertical + 1 === segundoItemVertical ||
+//             primerItemVertical - 1 === segundoItemVertical ||
+//             primerItemHorizontal + 1 === segundoItemHorizontal ||
+//             primerItemHorizontal - 1 === segundoItemHorizontal) {
+//             return true;
+//         }
+//     }
+//     segundoCuadrado = ''
+//     return false;
+
 let tamanio = 0;
 const rellenarEspaciosHTML = (item, x, y) => {
   let cuadroArriba = document.querySelector(`div[data-fila="${x - 1}"][data-columna="${y}"]`);
@@ -74,6 +84,12 @@ const rellenarEspaciosHTML = (item, x, y) => {
   } else if (cuadroArriba) {
 
     moverCuadrado(cuadroArriba, x, y)
+
+const crearGrilla = (filas, columnas, array) => {
+    const anchoDeGrilla = 510 / columnas
+    grilla.style.width = '510px'
+    grilla.innerHTML = ''
+    matriz = [];
 
     return;
   } else if (x - 1 == 0 || x == 0 || (!cuadroArriba && x != 0)) {
@@ -109,7 +125,6 @@ const eliminarCombos = () => {
       if (item.classList.contains('match')) {
         item.classList.remove('match');
         grilla.removeChild(item)
-
       }
     }
     setTimeout(() => encontrarEspaciosHTML(), 200);
@@ -143,6 +158,12 @@ const matchesVerticales = () => {
   return false;
 };
 
+
+// botonNivelFacil.onclick = () => {
+//     crearGrilla(9, 9, items);
+//     overlayNiveles.classList.add("fuera-de-foco")
+// }
+
 const matchesHorizontales = () => {
   for (let i = 0; i < matriz.length; i++) {
     for (let j = 0; j < matriz[i].length; j++) {
@@ -172,6 +193,7 @@ const hayMatches = () => {
   }
 };
 
+
 const sonAdyacentes = (primerItem, segundoItem) => {
   let primerItemVertical = Number(primerItem.dataset.fila);
   let primerItemHorizontal = Number(primerItem.dataset.columna);
@@ -195,6 +217,11 @@ const sonAdyacentes = (primerItem, segundoItem) => {
   segundoCuadrado = "";
   return false;
 };
+
+// botonNivelDificil.onclick = () => {
+//     crearGrilla(7, 7, items);
+//     overlayNiveles.classList.add("fuera-de-foco")
+// }
 
 const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
   const temp = matriz[x1][y1];
@@ -321,3 +348,4 @@ botonNivelDificil.onclick = () => {
   crearGrilla(7, items);
   overlayNiveles.classList.add("fuera-de-foco");
 };
+
