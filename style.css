@@ -33,11 +33,11 @@ body {
     /* text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa, -1px 1px #fafafa; */
 }
 
-
-.select-item{
+.select-item {
     border: 3px solid #fafafa;
     border-radius: 5px;
 }
+
 
 /*----------------------------------------------
             OVERLAY Y MODALES
@@ -245,7 +245,7 @@ body {
     align-items: center;
     text-align: center;
     font-size: 40px;
-    transition: top 0.3s, left 0.3s ;
+    transition: top 0.3s, left 0.3s;
 }
 
 #grilla div {
