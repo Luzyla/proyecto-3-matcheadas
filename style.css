@@ -43,7 +43,8 @@ body {
 
 .overlay-inicio,
 .overlay-reinicio,
-.overlay-niveles {
+.overlay-niveles,
+.overlay-timeout {
     position: absolute;
     top: 0;
     right: 0;
@@ -55,6 +56,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.overlay-timeout {
+    z-index: 8;
+}
+
+.contenedor-timeout {
+    z-index: 7;
 }
 
 .contenedor-bienvenida {
@@ -83,7 +92,8 @@ body {
 
 .contenedor-bienvenida,
 .contenedor-niveles,
-.contenedor-reinicio {
+.contenedor-reinicio,
+.contenedor-timeout {
     width: 40vw;
     position: relative;
     top: 36%;
@@ -108,7 +118,8 @@ body {
 
 .titulo-controles,
 .titulo-niveles,
-.titulo-nuevo-juego {
+.titulo-nuevo-juego,
+.titulo-timeout {
     font-family: "Hanalei Fill";
     font-size: 28px;
     text-align: center;
@@ -122,7 +133,8 @@ body {
 
 .txt-bienvenida,
 .txt-controles,
-.txt-nuevo-juego {
+.txt-nuevo-juego,
+.txt-timeoute {
     font-size: 16px;
     text-shadow: 2px 2px 4px #fafafa;
 }
@@ -131,7 +143,8 @@ body {
     padding: 10px;
 }
 
-.txt-controles {
+.txt-controles,
+.txt-nuevo-juego {
     padding: 2px;
 }
 
@@ -278,6 +291,7 @@ body {
     box-sizing: content-box;
     text-align: center;
     transition: top 0.08s, left 0.08s;
+    cursor: pointer;
 }
 
 #grilla div {
