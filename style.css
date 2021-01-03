@@ -107,7 +107,8 @@ body {
 }
 
 .titulo-controles,
-.titulo-niveles {
+.titulo-niveles,
+.titulo-nuevo-juego {
     font-family: "Hanalei Fill";
     font-size: 28px;
     text-align: center;
@@ -120,7 +121,8 @@ body {
 }
 
 .txt-bienvenida,
-.txt-controles {
+.txt-controles,
+.txt-nuevo-juego {
     font-size: 16px;
     text-shadow: 2px 2px 4px #fafafa;
 }
