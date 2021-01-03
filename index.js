@@ -8,11 +8,12 @@ let botonNivelDificil = document.getElementById("boton-nivel-dificil");
 let overlayNiveles = document.querySelector(".overlay-niveles");
 const grilla = document.querySelector(".caja-grilla");
 
-const items = ["🐯", "🦉", "🦋", "🐊", "🦍", "🦜", "🦨", "🦥", "🍄", "🍀"];
+const animales = ["🐯", "🦉", "🦋", "🐊", "🦍", "🦜", "🦨", "🦥", "🍄", "🍀"];
 let matriz = [];
 let primerCuadrado;
 let segundoCuadrado;
 let eliminarMatch = false;
+let tamanio = 0;
 
 botonComenzar.onclick = () => {
   overlayInicio.classList.add("fuera-de-foco");
@@ -23,7 +24,7 @@ const obtenerNumeroAlAzar = (array) => {
   return numero;
 };
 
-const obtenerItemAlAzar = (array) => {
+const obtenerAnimalAlAzar = (array) => {
   let animal = array[obtenerNumeroAlAzar(array)];
   return animal;
 };
@@ -32,18 +33,17 @@ const seleccionarCuadrado = (x, y) => {
   return document.querySelector(`div[data-fila="${x}"][data-columna="${y}"]`);
 };
 
-
-
 const moverCuadrado = (item, x, y) => {
   item.style.top = `${tamanio * x}px`;
   item.dataset.fila = `${x}`;
   item.dataset.columna = `${y}`;
-  matriz[x][y] = seleccionarCuadrado(x,y).innerHTML.trim()
+  matriz[x][y] = seleccionarCuadrado(x, y).innerHTML.trim()
 
 };
 
 const generarCuadrado = (tamanio, x, y) => {
-  let emoji = obtenerItemAlAzar(items)
+  let emoji = obtenerAnimalAlAzar(animales)
+
   const cuadrado = document.createElement('div')
   grilla.appendChild(cuadrado)
   cuadrado.dataset.fila = `${x}`
@@ -56,21 +56,14 @@ const generarCuadrado = (tamanio, x, y) => {
   cuadrado.addEventListener('click', selectItem)
   moverCuadrado(cuadrado, x, y);
   matriz[x][y] = emoji
-
-  return cuadrado;
+  setTimeout(() => {
+    if (hayMatches()) {
+      eliminarMatch = true
+      eliminarCombos()
+    }
+  }, 1000);
 };
 
-//         if (primerItemVertical + 1 === segundoItemVertical ||
-//             primerItemVertical - 1 === segundoItemVertical ||
-//             primerItemHorizontal + 1 === segundoItemHorizontal ||
-//             primerItemHorizontal - 1 === segundoItemHorizontal) {
-//             return true;
-//         }
-//     }
-//     segundoCuadrado = ''
-//     return false;
-
-let tamanio = 0;
 const rellenarEspaciosHTML = (item, x, y) => {
   let cuadroArriba = document.querySelector(`div[data-fila="${x - 1}"][data-columna="${y}"]`);
 
@@ -87,14 +80,12 @@ const rellenarEspaciosHTML = (item, x, y) => {
 
     return;
   } else if (cuadroArriba) {
-
     moverCuadrado(cuadroArriba, x, y)
     return;
+
   } else if (x - 1 == 0 || x == 0 || (!cuadroArriba && x != 0)) {
-    setTimeout(
-      () => generarCuadrado(tamanio, x, y),
-      600
-    );
+
+    setTimeout(() => generarCuadrado(tamanio, x, y), 600);
     return;
   }
 };
@@ -103,8 +94,8 @@ const encontrarEspaciosHTML = () => {
   for (let i = matriz.length - 1; i >= 0; i--) {
     for (let j = matriz.length - 1; j >= 0; j--) {
       const cuadrado = seleccionarCuadrado(i, j);
-      if (cuadrado == null) {
 
+      if (cuadrado === null) {
         rellenarEspaciosHTML(cuadrado, i, j);
 
       }
@@ -116,19 +107,24 @@ const encontrarEspaciosHTML = () => {
 
 const eliminarCombos = () => {
   const grillas = document.querySelectorAll("div#grilla");
+  let encontrarEspacios = false
   if (eliminarMatch) {
 
     for (const item of grillas) {
       if (item.classList.contains('match')) {
         item.classList.remove('match');
         grilla.removeChild(item)
+        encontrarEspacios = true
       }
     }
-    setTimeout(() => encontrarEspaciosHTML(), 200);
 
-    eliminarMatch = false
+    if (encontrarEspacios) {
+      setTimeout(() => encontrarEspaciosHTML(), 200);
+      eliminarMatch = false
+    }
     return true
   }
+
 };
 
 const matchesVerticales = () => {
@@ -155,11 +151,6 @@ const matchesVerticales = () => {
   return false;
 };
 
-
-// botonNivelFacil.onclick = () => {
-//     crearGrilla(9, 9, items);
-//     overlayNiveles.classList.add("fuera-de-foco")
-// }
 
 const matchesHorizontales = () => {
   for (let i = 0; i < matriz.length; i++) {
@@ -215,10 +206,6 @@ const sonAdyacentes = (primerItem, segundoItem) => {
   return false;
 };
 
-// botonNivelDificil.onclick = () => {
-//     crearGrilla(7, 7, items);
-//     overlayNiveles.classList.add("fuera-de-foco")
-// }
 
 const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
   const temp = matriz[x1][y1];
@@ -228,11 +215,9 @@ const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
 
 const intercambiarCuadros = (elemento1, elemento2) => {
   const item1 = document.querySelector(
-    `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`
-  );
+    `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`);
   const item2 = document.querySelector(
-    `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`
-  );
+    `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`);
   tamanio = parseFloat(item2.style.height);
 
   const datax1 = Number(item1.dataset.fila);
@@ -289,6 +274,7 @@ const selectItem = () => {
       }
     };
   }
+
 };
 
 const crearMatriz = (array, dimensiones) => {
@@ -296,7 +282,7 @@ const crearMatriz = (array, dimensiones) => {
   for (let i = 0; i < dimensiones; i++) {
     matriz[i] = [];
     for (let j = 0; j < dimensiones; j++) {
-      matriz[i][j] = obtenerItemAlAzar(array);
+      matriz[i][j] = obtenerAnimalAlAzar(array);
     }
   }
 };
@@ -325,25 +311,25 @@ const crearGrilla = (dimension, array) => {
 
 const grillaInicial = (dimension) => {
   do {
-    crearMatriz(items, dimension);
+    crearMatriz(animales, dimension);
   } while (hayMatches());
 };
 
 botonNivelFacil.onclick = () => {
   grillaInicial(9);
-  crearGrilla(9, items);
+  crearGrilla(9, animales);
   overlayNiveles.classList.add("fuera-de-foco");
 };
 
 botonNivelIntermedio.onclick = () => {
   grillaInicial(8);
-  crearGrilla(8, items);
+  crearGrilla(8, animales);
   overlayNiveles.classList.add("fuera-de-foco");
 };
 
 botonNivelDificil.onclick = () => {
   grillaInicial(7);
-  crearGrilla(7, items);
+  crearGrilla(7, animal);
   overlayNiveles.classList.add("fuera-de-foco");
 };
 
