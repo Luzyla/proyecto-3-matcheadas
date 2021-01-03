@@ -15,9 +15,34 @@ let segundoCuadrado;
 let eliminarMatch = false;
 let tamanio = 0;
 
+let botonInfo = document.querySelector(".info-button")
+let botonRefresh = document.querySelector(".refresh-button")
+let overlayRefresh = document.querySelector(".overlay-reinicio")
+let botonCancelar = document.getElementById("boton-cancelar")
+let botonNuevoJuego = document.getElementById("boton-nuevo-juego")
+
+
+botonInfo.onclick = () => {
+    overlayInicio.classList.remove("fuera-de-foco");
+}
+
+botonRefresh.onclick = () => {
+    overlayRefresh.classList.remove("fuera-de-foco");
+}
+
 botonComenzar.onclick = () => {
     overlayInicio.classList.add("fuera-de-foco");
 };
+
+botonCancelar.onclick = () => {
+    overlayRefresh.classList.add("fuera-de-foco");
+}
+
+botonNuevoJuego.onclick = () => {
+    overlayRefresh.classList.add("fuera-de-foco");
+    overlayNiveles.classList.remove("fuera-de-foco");
+}
+
 
 const obtenerNumeroAlAzar = (array) => {
     let numero = Math.floor(Math.random() * array.length);
