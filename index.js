@@ -37,7 +37,7 @@ const moverCuadrado = (item, x, y) => {
   item.style.top = `${tamanio * x}px`;
   item.dataset.fila = `${x}`;
   item.dataset.columna = `${y}`;
-  matriz[x][y] = seleccionarCuadrado(x,y).innerHTML.trim()
+  matriz[x][y] = seleccionarCuadrado(x, y).innerHTML.trim()
 
 };
 
@@ -56,8 +56,12 @@ const generarCuadrado = (tamanio, x, y) => {
   cuadrado.addEventListener('click', selectItem)
   moverCuadrado(cuadrado, x, y);
   matriz[x][y] = emoji
-
-  return cuadrado;
+  setTimeout(() => {
+    if (hayMatches()) {
+      eliminarMatch = true
+      eliminarCombos()
+    }
+  }, 1000);
 };
 
 
@@ -82,7 +86,7 @@ const rellenarEspaciosHTML = (item, x, y) => {
 
   } else if (x - 1 == 0 || x == 0 || (!cuadroArriba && x != 0)) {
 
-    setTimeout( () => generarCuadrado(tamanio, x, y), 600 );
+    setTimeout(() => generarCuadrado(tamanio, x, y), 600);
     return;
   }
 };
@@ -104,17 +108,21 @@ const encontrarEspaciosHTML = () => {
 
 const eliminarCombos = () => {
   const grillas = document.querySelectorAll("div#grilla");
+  let encontrarEspacios = false
   if (eliminarMatch) {
 
     for (const item of grillas) {
       if (item.classList.contains('match')) {
         item.classList.remove('match');
         grilla.removeChild(item)
-
+        encontrarEspacios = true
       }
     }
-    setTimeout(() => encontrarEspaciosHTML(), 200);
 
+    if (encontrarEspacios) {
+      setTimeout(() => encontrarEspaciosHTML(), 200);
+      eliminarMatch = false
+    }
     return true
   }
 
@@ -205,7 +213,7 @@ const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
 
 const intercambiarCuadros = (elemento1, elemento2) => {
   const item1 = document.querySelector(
-    `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]` );
+    `div[data-fila="${elemento1.dataset.fila}"][data-columna="${elemento1.dataset.columna}"]`);
   const item2 = document.querySelector(
     `div[data-fila="${elemento2.dataset.fila}"][data-columna="${elemento2.dataset.columna}"]`);
   tamanio = parseFloat(item2.style.height);
@@ -252,11 +260,6 @@ const selectItem = () => {
             primerCuadrado.classList.remove("select-item");
             primerCuadrado = "";
             segundoCuadrado = "";
-            // if (hayMatches()){
-            //   console.log('entro al segundo cerificador')
-            //   eliminarMatch = true
-            //   eliminarCombos()
-            // }
           }
 
         } else {
@@ -277,7 +280,7 @@ const crearMatriz = (array, dimensiones) => {
   for (let i = 0; i < dimensiones; i++) {
     matriz[i] = [];
     for (let j = 0; j < dimensiones; j++) {
-      matriz[i][j] = obtenerItemAlAzar(array);
+      matriz[i][j] = obtenerAnimalAlAzar(array);
     }
   }
 };
