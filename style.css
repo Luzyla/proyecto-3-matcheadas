@@ -26,11 +26,9 @@ body {
 
 html,
 body {
-    /* height: 100vh; */
-    /* overflow: hidden; */
+    overflow: hidden;
     font-family: Oxygen;
     color: #004225;
-    /* text-shadow: 1px 1px #fafafa, 1px -1px #fafafa, -1px -1px #fafafa, -1px 1px #fafafa; */
 }
 
 .select-item {
@@ -169,9 +167,9 @@ body {
 }
 
 .nombre-juego {
-    font-size: 55px;
+    font-size: 50px;
     font-family: "Hanalei Fill";
-    margin: 15px 0;
+    margin: 3px 0;
     color: #004225;
     text-shadow: 2px 2px 4px #fafafa;
     text-align: center;
@@ -181,10 +179,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background-color: #a5d610;
     border: 3px solid #004225;
-    padding: 5px 10px;
+    padding: 3px 5px;
     border-radius: 10px;
     color: #fafafa;
 }
@@ -210,25 +208,54 @@ body {
     margin-left: 15px;
 }
 
-#boton-ayuda,
+.img-input,
+.info-button,
+.refresh-button {
+    cursor: pointer;
+}
+
+.img-input {
+    width: 35px;
+    height: 35px;
+}
+
+.info-button,
+.refresh-button {
+    width: 30px;
+    height: 30px;
+    margin-left: 8px;
+}
+
+.contenedor-timer,
+.contenedor-refresh {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: "Hanalei Fill";
+    font-weight: 100;
+    flex-wrap: nowrap;
+}
+
+
+/* #boton-info,
 #boton-reiniciar {
     background-color: transparent;
     border: 0;
     padding: 5px;
     color: #424242;
     font-size: 20px;
-    cursor: pointer;
 }
 
 #boton-reiniciar i {
     transform: rotate(0);
     transition: 0.2s;
-}
+} */
 
 .caja-grilla {
     position: relative;
     width: auto;
-    height: 510px;
+    height: 505px;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #42424280;
@@ -243,15 +270,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 34px;
+    box-sizing: content-box;
     text-align: center;
-    font-size: 40px;
     transition: top 0.3s, left 0.3s;
 }
 
 #grilla div {
     margin: 1px;
     box-sizing: content-box;
-    padding: 1px;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 
