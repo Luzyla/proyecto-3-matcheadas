@@ -253,6 +253,7 @@ body {
 } */
 
 .caja-grilla {
+    position: relative;
     width: auto;
     height: 505px;
     border-radius: 10px;
@@ -265,11 +266,14 @@ body {
 }
 
 #grilla {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 34px;
     box-sizing: content-box;
+    text-align: center;
+    transition: top 0.3s, left 0.3s ;
 }
 
 #grilla div {
