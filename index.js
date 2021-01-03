@@ -64,7 +64,6 @@ const generarCuadrado = (tamanio, x, y) => {
   }, 1000);
 };
 
-
 const rellenarEspaciosHTML = (item, x, y) => {
   let cuadroArriba = document.querySelector(`div[data-fila="${x - 1}"][data-columna="${y}"]`);
 
@@ -152,6 +151,7 @@ const matchesVerticales = () => {
   return false;
 };
 
+
 const matchesHorizontales = () => {
   for (let i = 0; i < matriz.length; i++) {
     for (let j = 0; j < matriz[i].length; j++) {
@@ -181,6 +181,7 @@ const hayMatches = () => {
   }
 };
 
+
 const sonAdyacentes = (primerItem, segundoItem) => {
   let primerItemVertical = Number(primerItem.dataset.fila);
   let primerItemHorizontal = Number(primerItem.dataset.columna);
@@ -204,6 +205,7 @@ const sonAdyacentes = (primerItem, segundoItem) => {
   segundoCuadrado = "";
   return false;
 };
+
 
 const intercambiarItemsEnArrayGrilla = (x1, y1, x2, y2) => {
   const temp = matriz[x1][y1];
@@ -330,3 +332,4 @@ botonNivelDificil.onclick = () => {
   crearGrilla(7, animal);
   overlayNiveles.classList.add("fuera-de-foco");
 };
+
