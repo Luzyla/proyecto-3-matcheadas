@@ -27,6 +27,7 @@ let botonRefreshTimeout = document.getElementById("boton-reiniciar-timeout")
 
 let puntajeHTML = document.getElementById("puntaje")
 let puntajeFinal = document.getElementById("puntaje-final")
+let puntaje;
 
 botonInfo.onclick = () => {
     overlayInicio.classList.remove("fuera-de-foco");
@@ -81,14 +82,10 @@ const moverCuadrado = (item, x, y) => {
     item.dataset.fila = `${x}`;
     item.dataset.columna = `${y}`;
     matriz[x][y] = seleccionarCuadrado(x, y).innerHTML.trim()
-
 };
-
-
 
 const generarCuadrado = (tamanio, x, y) => {
     let emoji = obtenerAnimalAlAzar(animales)
-    puntaje = ''
     const cuadrado = document.createElement('div')
     grilla.appendChild(cuadrado)
     cuadrado.dataset.fila = `${x}`
@@ -105,8 +102,6 @@ const generarCuadrado = (tamanio, x, y) => {
         if (hayMatches()) {
             eliminarMatch = true
             eliminarCombos()
-            puntaje = puntaje += 100
-            mostrarPuntaje()
         }
     }, 300);
 };
@@ -150,17 +145,19 @@ const encontrarEspaciosHTML = () => {
     return true;
 };
 
-let puntaje = 0
-
 const mostrarPuntaje = () => {
-    puntajeHTML.innerHTML = `${puntaje}`
-    puntajeFinal.innerHTML = `${puntaje}`
+    puntajeHTML.innerHTML = `${Number(puntaje)}`
+    puntajeFinal.innerHTML = `${Number(puntaje)}`
 }
+
+puntaje = 0
 
 const eliminarCombos = () => {
     const grillas = document.querySelectorAll("div#grilla");
     let encontrarEspacios = false
 
+    puntaje = puntaje += 100
+    mostrarPuntaje()
     if (eliminarMatch) {
 
         for (const item of grillas) {
@@ -344,7 +341,7 @@ const dibujarGrillaHTML = (dimensiones) => {
         for (let j = 0; j < dimensiones; j++) {
             grilla.innerHTML += `<div id="grilla"  
                 style="height:${tamanio}px;  top: ${tamanio * i}px; left: ${tamanio * j
-        }px;"  data-fila=${i} data-columna=${j}  >
+        }px;"  data-fila=${i} data-columna=${j}>
                 ${matriz[i][j]} 
                 </div>`;
         }
@@ -375,6 +372,8 @@ botonNivelFacil.onclick = () => {
     grillaInicial(9);
     crearGrilla(9, animales);
     overlayNiveles.classList.add("fuera-de-foco");
+    puntaje = 0
+    puntajeHTML.innerHTML = `${Number(puntaje)}`
     activarTimer()
 };
 
@@ -382,6 +381,8 @@ botonNivelIntermedio.onclick = () => {
     grillaInicial(8);
     crearGrilla(8, animales);
     overlayNiveles.classList.add("fuera-de-foco");
+    puntaje = 0
+    puntajeHTML.innerHTML = `${Number(puntaje)}`
     activarTimer()
 };
 
@@ -389,5 +390,7 @@ botonNivelDificil.onclick = () => {
     grillaInicial(7);
     crearGrilla(7, animales);
     overlayNiveles.classList.add("fuera-de-foco");
+    puntaje = 0
+    puntajeHTML.innerHTML = `${Number(puntaje)}`
     activarTimer();
 };
