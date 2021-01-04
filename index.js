@@ -21,6 +21,9 @@ let overlayRefresh = document.querySelector(".overlay-reinicio")
 let botonCancelar = document.getElementById("boton-cancelar")
 let botonNuevoJuego = document.getElementById("boton-nuevo-juego")
 
+let overlayTimeout = document.querySelector(".overlay-timeout")
+let botonNuevoJuegoTimeout = document.getElementById("boton-nuevo-juego-timeout")
+let botonRefreshTimeout = document.getElementById("boton-reiniciar-timeout")
 
 botonInfo.onclick = () => {
     overlayInicio.classList.remove("fuera-de-foco");
@@ -43,6 +46,16 @@ botonNuevoJuego.onclick = () => {
     overlayNiveles.classList.remove("fuera-de-foco");
 }
 
+botonNuevoJuegoTimeout.onclick = () => {
+    overlayTimeout.classList.add("fuera-de-foco");
+    overlayNiveles.classList.remove("fuera-de-foco");
+    activarTimer()
+}
+
+botonRefreshTimeout.onclick = () => {
+    overlayTimeout.classList.add("fuera-de-foco");
+    activarTimer()
+}
 
 const obtenerNumeroAlAzar = (array) => {
     let numero = Math.floor(Math.random() * array.length);
@@ -340,20 +353,31 @@ const grillaInicial = (dimension) => {
     } while (hayMatches());
 };
 
+const timeout = () => {
+    overlayTimeout.classList.remove("fuera-de-foco");
+}
+
+const activarTimer = () => {
+    setTimeout(timeout, 30000);
+}
+
 botonNivelFacil.onclick = () => {
     grillaInicial(9);
     crearGrilla(9, animales);
     overlayNiveles.classList.add("fuera-de-foco");
+    activarTimer()
 };
 
 botonNivelIntermedio.onclick = () => {
     grillaInicial(8);
     crearGrilla(8, animales);
     overlayNiveles.classList.add("fuera-de-foco");
+    activarTimer()
 };
 
 botonNivelDificil.onclick = () => {
     grillaInicial(7);
     crearGrilla(7, animales);
     overlayNiveles.classList.add("fuera-de-foco");
+    activarTimer()
 };
