@@ -104,7 +104,7 @@ body {
     border-radius: 15px;
     margin: 10px 30px;
     padding: 0 30px;
-    display: inline-block;
+    /* display: inline-block; */
     transform: translate(-50%, -50%);
 }
 
