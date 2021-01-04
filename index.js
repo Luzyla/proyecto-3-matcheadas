@@ -25,12 +25,16 @@ let overlayTimeout = document.querySelector(".overlay-timeout")
 let botonNuevoJuegoTimeout = document.getElementById("boton-nuevo-juego-timeout")
 let botonRefreshTimeout = document.getElementById("boton-reiniciar-timeout")
 
+let puntajeHTML = document.getElementById("puntaje")
+let puntajeFinal = document.getElementById("puntaje-final")
+
 botonInfo.onclick = () => {
     overlayInicio.classList.remove("fuera-de-foco");
 }
 
 botonRefresh.onclick = () => {
     overlayRefresh.classList.remove("fuera-de-foco");
+    // grillaInicial(dimension);
 }
 
 botonComenzar.onclick = () => {
@@ -49,11 +53,12 @@ botonNuevoJuego.onclick = () => {
 botonNuevoJuegoTimeout.onclick = () => {
     overlayTimeout.classList.add("fuera-de-foco");
     overlayNiveles.classList.remove("fuera-de-foco");
-    activarTimer()
+    // activarTimer()
 }
 
 botonRefreshTimeout.onclick = () => {
     overlayTimeout.classList.add("fuera-de-foco");
+
     activarTimer()
 }
 
@@ -79,9 +84,11 @@ const moverCuadrado = (item, x, y) => {
 
 };
 
+
+
 const generarCuadrado = (tamanio, x, y) => {
     let emoji = obtenerAnimalAlAzar(animales)
-
+    puntaje = ''
     const cuadrado = document.createElement('div')
     grilla.appendChild(cuadrado)
     cuadrado.dataset.fila = `${x}`
@@ -98,8 +105,10 @@ const generarCuadrado = (tamanio, x, y) => {
         if (hayMatches()) {
             eliminarMatch = true
             eliminarCombos()
+            puntaje = puntaje += 100
+            mostrarPuntaje()
         }
-    }, 1000);
+    }, 300);
 };
 
 const rellenarEspaciosHTML = (item, x, y) => {
@@ -114,7 +123,7 @@ const rellenarEspaciosHTML = (item, x, y) => {
                 return;
             }
         }
-        setTimeout(() => generarCuadrado(tamanio, x, y), 800);
+        setTimeout(() => generarCuadrado(tamanio, x, y), 300);
 
         return;
     } else if (cuadroArriba) {
@@ -123,7 +132,7 @@ const rellenarEspaciosHTML = (item, x, y) => {
 
     } else if (x - 1 == 0 || x == 0 || (!cuadroArriba && x != 0)) {
 
-        setTimeout(() => generarCuadrado(tamanio, x, y), 600);
+        setTimeout(() => generarCuadrado(tamanio, x, y), 300);
         return;
     }
 };
@@ -135,29 +144,35 @@ const encontrarEspaciosHTML = () => {
 
             if (cuadrado === null) {
                 rellenarEspaciosHTML(cuadrado, i, j);
-
             }
         }
     }
     return true;
 };
 
+let puntaje = 0
+
+const mostrarPuntaje = () => {
+    puntajeHTML.innerHTML = `${puntaje}`
+    puntajeFinal.innerHTML = `${puntaje}`
+}
 
 const eliminarCombos = () => {
     const grillas = document.querySelectorAll("div#grilla");
     let encontrarEspacios = false
+
     if (eliminarMatch) {
 
         for (const item of grillas) {
             if (item.classList.contains('match')) {
                 item.classList.remove('match');
-                grilla.removeChild(item)
+                grilla.removeChild(item);
                 encontrarEspacios = true
             }
         }
 
         if (encontrarEspacios) {
-            setTimeout(() => encontrarEspaciosHTML(), 200);
+            setTimeout(() => encontrarEspaciosHTML(), 300);
             eliminarMatch = false
         }
         return true
@@ -174,7 +189,6 @@ const matchesVerticales = () => {
                 matriz[i][j] === matriz[i + 1][j] &&
                 matriz[i][j] === matriz[i + 2][j]
             ) {
-
                 if (eliminarMatch) {
                     seleccionarCuadrado(i, j).classList.add('match')
                     seleccionarCuadrado(i + 1, j).classList.add('match')
@@ -183,12 +197,9 @@ const matchesVerticales = () => {
                 return true;
             }
         }
-
     }
-
     return false;
 };
-
 
 const matchesHorizontales = () => {
     for (let i = 0; i < matriz.length; i++) {
@@ -197,7 +208,6 @@ const matchesHorizontales = () => {
                 matriz[i][j] === matriz[i][j + 1] &&
                 matriz[i][j] === matriz[i][j + 2]
             ) {
-
                 if (eliminarMatch) {
                     seleccionarCuadrado(i, j).classList.add('match')
                     seleccionarCuadrado(i, j + 1).classList.add('match')
@@ -209,6 +219,7 @@ const matchesHorizontales = () => {
     }
     return false;
 };
+
 
 const hayMatches = () => {
     if (matchesHorizontales() || matchesVerticales()) {
@@ -292,7 +303,7 @@ const selectItem = () => {
                     intercambiarCuadros(primerCuadrado, segundoCuadrado);
 
                     if (!hayMatches()) {
-                        setTimeout(() => intercambiarCuadros(primerCuadrado, e.target), 500);
+                        setTimeout(() => intercambiarCuadros(primerCuadrado, e.target), 300);
                         segundoCuadrado = "";
 
                     } else {
@@ -312,7 +323,6 @@ const selectItem = () => {
             }
         };
     }
-
 };
 
 const crearMatriz = (array, dimensiones) => {
@@ -355,11 +365,11 @@ const grillaInicial = (dimension) => {
 
 const timeout = () => {
     overlayTimeout.classList.remove("fuera-de-foco");
-}
+};
 
 const activarTimer = () => {
     setTimeout(timeout, 30000);
-}
+};
 
 botonNivelFacil.onclick = () => {
     grillaInicial(9);
@@ -379,5 +389,5 @@ botonNivelDificil.onclick = () => {
     grillaInicial(7);
     crearGrilla(7, animales);
     overlayNiveles.classList.add("fuera-de-foco");
-    activarTimer()
+    activarTimer();
 };

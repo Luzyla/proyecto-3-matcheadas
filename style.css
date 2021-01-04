@@ -96,8 +96,6 @@ body {
 .contenedor-timeout {
     width: 40vw;
     position: relative;
-    top: 36%;
-    left: 20%;
     background-color: #a5d610;
     border: 3px solid #004225;
     text-align: center;
@@ -106,6 +104,18 @@ body {
     padding: 0 30px;
     /* display: inline-block; */
     transform: translate(-50%, -50%);
+}
+
+.contenedor-bienvenida {
+    top: 36%;
+    left: 20%;
+}
+
+.contenedor-niveles,
+.contenedor-reinicio,
+.contenedor-timeout {
+    top: 20%;
+    left: 20%;
 }
 
 .titulo-bienvenida {
@@ -134,7 +144,7 @@ body {
 .txt-bienvenida,
 .txt-controles,
 .txt-nuevo-juego,
-.txt-timeoute {
+.txt-timeout {
     font-size: 16px;
     text-shadow: 2px 2px 4px #fafafa;
 }
