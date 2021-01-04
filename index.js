@@ -344,7 +344,7 @@ const dibujarGrillaHTML = (dimensiones) => {
         for (let j = 0; j < dimensiones; j++) {
             grilla.innerHTML += `<div id="grilla"  
                 style="height:${tamanio}px;  top: ${tamanio * i}px; left: ${tamanio * j
-        }px;"  data-fila=${i} data-columna=${j}  >
+        }px;"  data-fila=${i} data-columna=${j}>
                 ${matriz[i][j]} 
                 </div>`;
         }
