@@ -262,21 +262,6 @@ body {
     flex-wrap: nowrap;
 }
 
-
-/* #boton-info,
-#boton-reiniciar {
-    background-color: transparent;
-    border: 0;
-    padding: 5px;
-    color: #424242;
-    font-size: 20px;
-}
-
-#boton-reiniciar i {
-    transform: rotate(0);
-    transition: 0.2s;
-} */
-
 .caja-grilla {
     position: relative;
     width: 610px;
@@ -313,6 +298,123 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
+}
+
+.firmas {
+    width: 250px;
+    position: fixed;
+    top: 550px;
+    left: 1020px;
+    border-radius: 10px;
+    border: 3px solid #004225;
+    background-color: #a5d610;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: #004225;
+    font-family: Oxygen;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #fafafa;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #004225;
+}
+
+a:focus {
+    color: #fafafa;
+    font-weight: bold;
+}
+
+
+/*----------------------------------------------
+                RESPONSIVE
+----------------------------------------------*/
+
+@media (max-width: 600px) {
+    /*----------------------------------------------
+                OVERLAY Y MODALES
+    ----------------------------------------------*/
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        width: 90vw;
+        position: relative;
+        background-color: #a5d610;
+        border: 3px solid #004225;
+        text-align: center;
+        border-radius: 15px;
+        margin: 10px 30px;
+        padding: 0 30px;
+        /* display: inline-block; */
+        transform: translate(-50%, -50%);
+    }
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        top: 0;
+        left: 0;
+    }
+    .titulo-bienvenida {
+        font-size: 35px;
+    }
+    .titulo-controles,
+    .titulo-niveles,
+    .titulo-nuevo-juego,
+    .titulo-timeout {
+        font-size: 20px;
+    }
+    .txt-bienvenida,
+    .txt-controles,
+    .txt-nuevo-juego,
+    .txt-timeout {
+        font-size: 16px;
+    }
+    .size-emoji {
+        font-size: 20px;
+    }
+    /* .boton-niveles {
+        width: 200px;
+        padding: 5px;
+        margin: 10px;
+    }*/
+    /*----------------------------------------------
+                SECCIÓN PRINCIPAL
+    ----------------------------------------------*/
+    .seccion-principal {
+        height: 100vh;
+    }
+    .nombre-juego {
+        font-size: 35px;
+    }
+    .contenedor-puntaje {
+        font-size: 24px;
+        font-weight: 100;
+    }
+    #combo {
+        width: 18px;
+    }
+    .img-input {
+        width: 30px;
+        height: 30px;
+    }
+    .contenedor-timer,
+    .contenedor-refresh {
+        font-size: 20px;
+    }
+    .caja-grilla {
+        max-width: 590px;
+        max-height: 510px;
+    }
+    #grilla {
+        font-size: 30px;
+    }
 }
 
 
