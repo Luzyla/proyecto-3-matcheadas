@@ -29,6 +29,8 @@ let puntajeHTML = document.getElementById("puntaje")
 let puntajeFinal = document.getElementById("puntaje-final")
 let puntaje;
 
+let nivel = ""
+
 botonInfo.onclick = () => {
     overlayInicio.classList.remove("fuera-de-foco");
 }
@@ -54,13 +56,38 @@ botonNuevoJuego.onclick = () => {
 botonNuevoJuegoTimeout.onclick = () => {
     overlayTimeout.classList.add("fuera-de-foco");
     overlayNiveles.classList.remove("fuera-de-foco");
-    // activarTimer()
+}
+
+const iniciarNivelFacil = () => {
+    grillaInicial(9);
+    crearGrilla(9, animales);
+    iniciarNivel()
+    nivel = "facil"
+}
+
+const iniciarNivelIntermedio = () => {
+    grillaInicial(8);
+    crearGrilla(8, animales);
+    iniciarNivel()
+    nivel = "intermedio"
+}
+
+const iniciarNivelDificil = () => {
+    grillaInicial(7);
+    crearGrilla(7, animales);
+    iniciarNivel()
+    nivel = "dificil"
 }
 
 botonRefreshTimeout.onclick = () => {
     overlayTimeout.classList.add("fuera-de-foco");
-
-    activarTimer()
+    if (nivel === "facil") {
+        iniciarNivelFacil()
+    } else if (nivel === "intermedio") {
+        iniciarNivelIntermedio()
+    } else {
+        iniciarNivelDificil()
+    }
 }
 
 const obtenerNumeroAlAzar = (array) => {
@@ -190,6 +217,7 @@ const matchesVerticales = () => {
                     seleccionarCuadrado(i, j).classList.add('match')
                     seleccionarCuadrado(i + 1, j).classList.add('match')
                     seleccionarCuadrado(i + 2, j).classList.add('match')
+
                 }
                 return true;
             }
@@ -368,29 +396,30 @@ const activarTimer = () => {
     setTimeout(timeout, 30000);
 };
 
-botonNivelFacil.onclick = () => {
-    grillaInicial(9);
-    crearGrilla(9, animales);
+const iniciarNivel = () => {
     overlayNiveles.classList.add("fuera-de-foco");
     puntaje = 0
     puntajeHTML.innerHTML = `${Number(puntaje)}`
     activarTimer()
+}
+
+botonNivelFacil.onclick = () => {
+    grillaInicial(9);
+    crearGrilla(9, animales);
+    iniciarNivel()
+    nivel = "facil"
 };
 
 botonNivelIntermedio.onclick = () => {
     grillaInicial(8);
     crearGrilla(8, animales);
-    overlayNiveles.classList.add("fuera-de-foco");
-    puntaje = 0
-    puntajeHTML.innerHTML = `${Number(puntaje)}`
-    activarTimer()
+    iniciarNivel()
+    nivel = "intermedio"
 };
 
 botonNivelDificil.onclick = () => {
     grillaInicial(7);
     crearGrilla(7, animales);
-    overlayNiveles.classList.add("fuera-de-foco");
-    puntaje = 0
-    puntajeHTML.innerHTML = `${Number(puntaje)}`
-    activarTimer();
+    iniciarNivel()
+    nivel = "dificil"
 };
