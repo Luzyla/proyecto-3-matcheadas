@@ -32,7 +32,7 @@ body {
 }
 
 .select-item {
-    border: 3px solid #fafafa;
+    border: 2px solid #fafafa;
     border-radius: 5px;
 }
 
@@ -102,7 +102,6 @@ body {
     border-radius: 15px;
     margin: 10px 30px;
     padding: 0 30px;
-    /* display: inline-block; */
     transform: translate(-50%, -50%);
 }
 
@@ -335,15 +334,12 @@ a:focus {
                 RESPONSIVE
 ----------------------------------------------*/
 
-@media (max-width: 600px) {
-    /*----------------------------------------------
-                OVERLAY Y MODALES
-    ----------------------------------------------*/
+@media (min-width: 1600px) and (max-width: 2000px) {
     .contenedor-bienvenida,
     .contenedor-niveles,
     .contenedor-reinicio,
     .contenedor-timeout {
-        width: 90vw;
+        /* width: 40vw; */
         position: relative;
         background-color: #a5d610;
         border: 3px solid #004225;
@@ -354,36 +350,71 @@ a:focus {
         /* display: inline-block; */
         transform: translate(-50%, -50%);
     }
-    .contenedor-bienvenida,
+    .contenedor-bienvenida {
+        top: 36%;
+        left: 20%;
+    }
     .contenedor-niveles,
     .contenedor-reinicio,
     .contenedor-timeout {
-        top: 0;
-        left: 0;
+        top: 20%;
+        left: 20%;
     }
     .titulo-bienvenida {
-        font-size: 35px;
+        font-weight: 400;
+        font-size: 50px;
+        font-family: "Hanalei Fill";
+        margin: 25px 0;
+        text-shadow: 2px 2px 4px #fafafa;
     }
     .titulo-controles,
     .titulo-niveles,
     .titulo-nuevo-juego,
     .titulo-timeout {
-        font-size: 20px;
+        font-family: "Hanalei Fill";
+        font-size: 28px;
+        text-align: center;
+        margin: 20px 20px 10px 20px;
+        text-shadow: 2px 2px 4px #fafafa;
+    }
+    .txt-nuevo-juego {
+        margin-bottom: 20px;
     }
     .txt-bienvenida,
     .txt-controles,
     .txt-nuevo-juego,
     .txt-timeout {
         font-size: 16px;
+        text-shadow: 2px 2px 4px #fafafa;
+    }
+    .txt-bienvenida {
+        padding: 10px;
+    }
+    .txt-controles,
+    .txt-nuevo-juego {
+        padding: 2px;
+    }
+    .boton-basico {
+        text-align: center;
+        width: 150px;
+        height: 50px;
+        padding: 10px;
+        margin: 20px;
+        background-color: #004225;
+        color: #fafafa;
+        font-size: 24px;
+        font-family: "Hanalei Fill";
+        border-radius: 10px;
+        cursor: pointer;
     }
     .size-emoji {
-        font-size: 20px;
+        font-size: 25px;
     }
-    /* .boton-niveles {
+    .boton-niveles {
         width: 200px;
         padding: 5px;
         margin: 10px;
-    }*/
+    }
     /*----------------------------------------------
                 SECCIÓN PRINCIPAL
     ----------------------------------------------*/
@@ -391,30 +422,374 @@ a:focus {
         height: 100vh;
     }
     .nombre-juego {
-        font-size: 35px;
+        font-size: 50px;
+        font-family: "Hanalei Fill";
+        margin: 3px 0;
+        color: #004225;
+        text-shadow: 2px 2px 4px #fafafa;
+        text-align: center;
+    }
+    .contenedor-juego {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        background-color: #a5d610;
+        border: 3px solid #004225;
+        padding: 3px 5px;
+        border-radius: 10px;
+        color: #fafafa;
     }
     .contenedor-puntaje {
+        display: flex;
+        justify-content: center;
         font-size: 24px;
+        font-family: "Hanalei Fill";
         font-weight: 100;
     }
+    .contenedor-puntaje p {
+        display: flex;
+    }
     #combo {
-        width: 18px;
+        width: 20px;
+        margin-right: 20px;
+    }
+    #puntaje {
+        margin-left: 15px;
+    }
+    .img-input,
+    .info-button,
+    .refresh-button {
+        cursor: pointer;
     }
     .img-input {
+        width: 35px;
+        height: 35px;
+    }
+    .info-button,
+    .refresh-button {
         width: 30px;
         height: 30px;
+        margin-left: 8px;
     }
     .contenedor-timer,
     .contenedor-refresh {
-        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-family: "Hanalei Fill";
+        font-weight: 100;
+        flex-wrap: nowrap;
     }
     .caja-grilla {
-        max-width: 590px;
-        max-height: 510px;
+        position: relative;
+        width: 610px;
+        height: 510px;
+        width: auto;
+        height: 505px;
+        border-radius: 10px;
+        border: 3px solid #004225;
+        background-color: #42424280;
+        justify-content: center;
+        flex-wrap: wrap;
+        display: flex;
+        box-sizing: content-box;
     }
     #grilla {
-        font-size: 30px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 34px;
+        box-sizing: content-box;
+        text-align: center;
+        transition: top 0.08s, left 0.08s;
+        cursor: pointer;
     }
+    #grilla div {
+        margin: 1px;
+        box-sizing: content-box;
+    }
+    .timer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    .firmas {
+        width: 250px;
+        position: fixed;
+        top: 550px;
+        left: 1020px;
+        border-radius: 10px;
+        border: 3px solid #004225;
+        background-color: #a5d610;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        color: #004225;
+        font-family: Oxygen;
+        margin: 10px;
+        padding: 5px;
+        text-align: center;
+    }
+    a {
+        text-decoration: none;
+        color: #fafafa;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #004225;
+    }
+    a:focus {
+        color: #fafafa;
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+    /*----------------------------------------------
+            OVERLAY Y MODALES
+    ----------------------------------------------*/
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        width: 70vw;
+    }
+    .contenedor-bienvenida {
+        top: 10%;
+        left: 12%;
+    }
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        top: 10%;
+        left: 12%;
+    }
+    /*----------------------------------------------
+            SECCIÓN PRINCIPAL
+    ----------------------------------------------*/
+    .seccion-principal {
+        height: 100vh;
+    }
+    .nombre-juego {
+        margin: 40px 0;
+    }
+    .firmas {
+        width: 510px;
+        height: 50px;
+        position: fixed;
+        top: 800px;
+        left: 122px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 599px) {
+    /*----------------------------------------------
+                OVERLAY Y MODALES
+    ----------------------------------------------*/
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        width: 360px;
+    }
+    .contenedor-bienvenida {
+        top: 300px;
+        left: 178px;
+    }
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        top: 180px;
+        left: 178px;
+    }
+    /* .titulo-bienvenida {
+        font-weight: 400;
+        font-size: 50px;
+        font-family: "Hanalei Fill";
+        margin: 25px 0;
+        text-shadow: 2px 2px 4px #fafafa;
+    }
+    .titulo-controles,
+    .titulo-niveles,
+    .titulo-nuevo-juego,
+    .titulo-timeout {
+        font-family: "Hanalei Fill";
+        font-size: 28px;
+        text-align: center;
+        margin: 20px 20px 10px 20px;
+        text-shadow: 2px 2px 4px #fafafa;
+    }
+    .txt-nuevo-juego {
+        margin-bottom: 20px;
+    }
+    .txt-bienvenida,
+    .txt-controles,
+    .txt-nuevo-juego,
+    .txt-timeout {
+        font-size: 16px;
+        text-shadow: 2px 2px 4px #fafafa;
+    }
+    .txt-bienvenida {
+        padding: 10px;
+    }
+    .txt-controles,
+    .txt-nuevo-juego {
+        padding: 2px;
+    }
+    .boton-basico {
+        text-align: center;
+        width: 150px;
+        height: 50px;
+        padding: 10px;
+        margin: 20px;
+        background-color: #004225;
+        color: #fafafa;
+        font-size: 24px;
+        font-family: "Hanalei Fill";
+        border-radius: 10px;
+        cursor: pointer;
+    } */
+    /* .size-emoji {
+        font-size: 25px;
+    } */
+    /* .boton-niveles {
+        width: 200px;
+        padding: 5px;
+        margin: 10px;
+    } */
+    /*----------------------------------------------
+                SECCIÓN PRINCIPAL
+    ----------------------------------------------*/
+    /* .seccion-principal {
+        width: 100%;
+        height: 100vh;
+    }
+    /* .nombre-juego {
+        font-size: 50px;
+        font-family: "Hanalei Fill";
+        margin: 3px 0;
+        color: #004225;
+        text-shadow: 2px 2px 4px #fafafa;
+        text-align: center;
+    } */
+    .contenedor-juego {
+        max-width: 310px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        background-color: #a5d610;
+        border: 3px solid #004225;
+        padding: 3px 5px;
+        border-radius: 10px;
+        color: #fafafa;
+    }
+    .contenedor-puntaje {
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+        font-family: "Hanalei Fill";
+        font-weight: 100;
+    }
+    .contenedor-puntaje p {
+        display: flex;
+    }
+    #combo {
+        width: 20px;
+        margin-right: 20px;
+    }
+    #puntaje {
+        margin-left: 15px;
+    }
+    .img-input,
+    .info-button,
+    .refresh-button {
+        cursor: pointer;
+    }
+    .img-input {
+        width: 35px;
+        height: 35px;
+    }
+    .info-button,
+    .refresh-button {
+        width: 30px;
+        height: 30px;
+        margin-left: 8px;
+    }
+    .contenedor-timer,
+    .contenedor-refresh {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-family: "Hanalei Fill";
+        font-weight: 100;
+        flex-wrap: nowrap;
+    }
+    .caja-grilla {
+        position: relative;
+        max-width: 510px;
+        height: 510px;
+        border-radius: 10px;
+        border: 3px solid #004225;
+        background-color: #42424280;
+        justify-content: center;
+        flex-wrap: wrap;
+        display: flex;
+        box-sizing: content-box;
+    }
+    #grilla {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 34px;
+        box-sizing: content-box;
+        text-align: center;
+        transition: top 0.08s, left 0.08s;
+        cursor: pointer;
+    }
+    #grilla div {
+        margin: 1px;
+        box-sizing: content-box;
+    }
+    .timer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    .firmas {
+        width: 250px;
+        position: fixed;
+        top: 550px;
+        left: 1020px;
+        border-radius: 10px;
+        border: 3px solid #004225;
+        background-color: #a5d610;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        color: #004225;
+        font-family: Oxygen;
+        margin: 10px;
+        padding: 5px;
+        text-align: center;
+    }
+    a {
+        text-decoration: none;
+        color: #fafafa;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #004225;
+    }
+    a:focus {
+        color: #fafafa;
+        font-weight: bold;
+    }
+    */
 }
 
 
