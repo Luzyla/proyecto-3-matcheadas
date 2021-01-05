@@ -263,10 +263,8 @@ body {
 
 .caja-grilla {
     position: relative;
-    width: 610px;
+    width: 510px;
     height: 510px;
-    width: auto;
-    height: 505px;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #42424280;
@@ -381,12 +379,11 @@ a:focus {
 ----------------------------------------------*/
 
 .oculto {
-    /* revisar si conviene usar display none o moverlo fuera del foco */
     display: none;
 }
 
 .fuera-de-foco {
     opacity: 0;
     visibility: hidden;
-    left: 2500px;
+    left: 3500px;
 }
