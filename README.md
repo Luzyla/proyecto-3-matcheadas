@@ -1,16 +1,30 @@
-# DURANTE EL DESARROLLO
+# Juego MatcheADAs / Matchs Game ~ by Rosy & Luzyla
 
-## Uso de GIT & GitHub
-- Antes de empezar a trabajar con un tema, crear una BRANCH con el nombre del tema general. Ejemplo: "design" para el estilado. El nombre puede ser en castellano o en inglés. 
-    - Crear e ir a la branch: git checkout -b nombredelabranch (si se hace desde main, se obtendrá una copia de main al momento de ejecutar el comando)
-    - Moverse de una branch a la otra: git checkout main (para volver a main desde la branch creada)
-    - Si la branch fue creada en el repositorio local, para subirla a GitHub antes de hacer push hay que hacer: git push --set-upstream origin elnombredelabranch (esto se hace sólo la primera vez)
-    - Para saber en qué branch estoy trabajando: git branch (muestra listado de branches, y con un * la branch en la que estoy posicionada).
-    - IMPORTANTE: hacer commits periódicos.
+## URL: https://luzyla.github.io/proyecto-3/
 
-- Una vez que el código de la branch está terminado, requiere unir al código integrado a main:
-    - Primero ir a main: git checkout main
-    - Segundo, hacer el merge: git merge nombredelabranch
+## Descripción / Description:
+### Español
+Este proyecto es el tercero que realizamos en ADA ITW, durante la formación formal como FrontEnd Developer. A su vez también es el primer TP grupal que realizamos en la cursada. Es la conclusión del cuarto módulo donde nos aventuramos en mayor profundidad al mundo JavaScript, y seguimos afianzando los conceptos de HTML5, CSS3 y Flex. El resultado de aplicar todos esos conocimientos, esta vez simulando el trabajo en equipo, usando herramientas como Metodologías Ágiles y tablero en Trello para organizar todo el trabajo a realizar. Inicialmente eramos un equipo de 5 integrantes y sólo llegamos 2 hasta el final, pero pudimos sortear los desafíos y hacer un juego funcional.
+Que lo disfrutes!
 
-- Cualquier duda, nos preguntamos mutuamente! 
-- Quién quiera sumar algún comando más que sume, bienvenido!
+### English
+This is my third project on the formal learning in ADA ITW as a FrontEnd Developer. Also, it's the first as grupal assignment. This is the end of the fourth module, where we went more depply in the JavaScript adventure, and also we are diving into HTML5, CSS3, and Flex. This is the result of use that knowledge and played a team effort. We used Agile tools to organized the work we have to do. In the beggining of the assignment we was a 5-people-team but we are only 2 in the progress and now, but we push through and finish a good game.
+Enjoy!
+
+## Tecnologías / Technologies:
+- JavaScript
+    - DOM
+    - for of
+    - if
+    - funciones flecha / arrow fuctions
+    - arrays
+- HTML5
+- CSS3
+- FLEX
+- Accesibilidad / Accesibility
+    - aria labels
+    - tabIndex
+    - focus
+- Etiquetas semánticas / Semantic labels
+- Recursos gratuitos de fuentes, imagenes e íconos / Free resources of fonts, images and icons.
+- favicon
