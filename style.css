@@ -293,12 +293,11 @@ body {
 ----------------------------------------------*/
 
 .oculto {
-    /* revisar si conviene usar display none o moverlo fuera del foco */
     display: none;
 }
 
 .fuera-de-foco {
     opacity: 0;
     visibility: hidden;
-    left: 2500px;
+    left: 3500px;
 }
