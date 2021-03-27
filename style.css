@@ -32,7 +32,7 @@ body {
 }
 
 .select-item {
-    border: 2px solid #fafafa;
+    border: 3px solid #fafafa;
     border-radius: 5px;
 }
 
@@ -102,6 +102,7 @@ body {
     border-radius: 15px;
     margin: 10px 30px;
     padding: 0 30px;
+    /* display: inline-block; */
     transform: translate(-50%, -50%);
 }
 
@@ -263,8 +264,10 @@ body {
 
 .caja-grilla {
     position: relative;
-    width: 510px;
+    width: 610px;
     height: 510px;
+    width: auto;
+    height: 505px;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #42424280;
@@ -301,9 +304,7 @@ body {
     width: 250px;
     position: fixed;
     bottom: 5%;
-    right: 5%;
-    /* top: 550px;
-    left: 1020px; */
+    right: 4%;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #a5d610;
@@ -334,47 +335,135 @@ a:focus {
                 RESPONSIVE
 ----------------------------------------------*/
 
-@media (min-width: 600px) and (max-width: 800px) {
+@media (max-width: 600px) {
     /*----------------------------------------------
-            OVERLAY Y MODALES
+                OVERLAY Y MODALES
     ----------------------------------------------*/
     .contenedor-bienvenida,
     .contenedor-niveles,
     .contenedor-reinicio,
     .contenedor-timeout {
-        width: 70vw;
+        width: 90vw;
+        position: relative;
+        background-color: #a5d610;
+        border: 3px solid #004225;
+        text-align: center;
+        border-radius: 15px;
+        margin: 10px 30px;
+        padding: 0 30px;
+        /* display: inline-block; */
+        transform: translate(-50%, -50%);
     }
-    .contenedor-bienvenida {
-        top: 10%;
-        left: 12%;
-    }
+    .contenedor-bienvenida,
     .contenedor-niveles,
     .contenedor-reinicio,
     .contenedor-timeout {
-        top: 10%;
-        left: 12%;
+        top: 0;
+        left: 0;
     }
+    .titulo-bienvenida {
+        font-size: 35px;
+    }
+    .titulo-controles,
+    .titulo-niveles,
+    .titulo-nuevo-juego,
+    .titulo-timeout {
+        font-size: 20px;
+    }
+    .txt-bienvenida,
+    .txt-controles,
+    .txt-nuevo-juego,
+    .txt-timeout {
+        font-size: 16px;
+    }
+    .size-emoji {
+        font-size: 20px;
+    }
+    /* .boton-niveles {
+        width: 200px;
+        padding: 5px;
+        margin: 10px;
+    }*/
     /*----------------------------------------------
-            SECCIÓN PRINCIPAL
+                SECCIÓN PRINCIPAL
     ----------------------------------------------*/
     .seccion-principal {
         height: 100vh;
     }
     .nombre-juego {
-        margin: 40px 0;
+        font-size: 35px;
     }
-    .firmas {
-        width: 510px;
-        height: 50px;
-        position: fixed;
-        top: 800px;
-        left: 122px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .contenedor-puntaje {
+        font-size: 24px;
+        font-weight: 100;
+    }
+    #combo {
+        width: 18px;
+    }
+    .img-input {
+        width: 30px;
+        height: 30px;
+    }
+    .contenedor-timer,
+    .contenedor-refresh {
+        font-size: 20px;
+    }
+    .caja-grilla {
+        max-width: 590px;
+        max-height: 510px;
+    }
+    #grilla {
+        font-size: 30px;
     }
 }
 
+@media (min-width: 1300px) {
+    /*----------------------------------------------
+                    BASIC
+    ----------------------------------------------*/
+
+
+    /*----------------------------------------------
+                OVERLAY Y MODALES
+    ----------------------------------------------*/
+
+    .contenedor-bienvenida {
+        top: 30%;
+    }
+
+    .titulo-bienvenida {
+        font-size: 60px;
+    }
+
+    .titulo-controles,
+    .titulo-niveles,
+    .titulo-nuevo-juego,
+    .titulo-timeout {
+        font-size: 32px;
+    }
+
+    .txt-bienvenida,
+    .txt-controles,
+    .txt-nuevo-juego,
+    .txt-timeout {
+        font-size: 20px;
+    }
+
+    /*----------------------------------------------
+                SECCIÓN PRINCIPAL
+    ----------------------------------------------*/
+
+    .nombre-juego {
+        font-size: 70px;
+        margin: 20px;
+    }
+
+    .contenedor-juego {
+        margin-bottom: 15px;
+        
+    }
+
+}
 
 /*----------------------------------------------
                 DISPLAY NONE
@@ -387,5 +476,5 @@ a:focus {
 .fuera-de-foco {
     opacity: 0;
     visibility: hidden;
-    left: 3500px;
+    left: 2500px;
 }
