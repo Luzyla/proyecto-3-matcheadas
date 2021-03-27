@@ -300,8 +300,10 @@ body {
 .firmas {
     width: 250px;
     position: fixed;
-    top: 550px;
-    left: 1020px;
+    bottom: 5%;
+    right: 5%;
+    /* top: 550px;
+    left: 1020px; */
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #a5d610;
