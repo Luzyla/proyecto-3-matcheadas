@@ -1,6 +1,6 @@
 # Juego MatcheADAs / MatcheADAs Game ~ by Rosy & Luzyla
 
-## URL: https://luzyla.github.io/proyecto-3/
+## URL: https://luzyla.github.io/proyecto-3-matcheadas/
 
 ## Descripción / Description:
 ### Español
