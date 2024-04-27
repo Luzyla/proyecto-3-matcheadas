@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Hanalei+Fill&display=swap');
 
 /*----------------------------------------------
                 BASIC
@@ -8,14 +7,13 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(2-02.svg);
+    flex-direction: column;
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: 50%;
@@ -35,7 +33,6 @@ body {
     border: 3px solid #fafafa;
     border-radius: 5px;
 }
-
 
 /*----------------------------------------------
             OVERLAY Y MODALES
@@ -94,16 +91,15 @@ body {
 .contenedor-niveles,
 .contenedor-reinicio,
 .contenedor-timeout {
-    width: 40vw;
-    position: relative;
+    width: auto;
+    max-width: 60%;
+    min-width: 55%;
     background-color: #a5d610;
     border: 3px solid #004225;
     text-align: center;
     border-radius: 15px;
     margin: 10px 30px;
     padding: 0 30px;
-    /* display: inline-block; */
-    transform: translate(-50%, -50%);
 }
 
 .contenedor-bienvenida {
@@ -120,9 +116,9 @@ body {
 
 .titulo-bienvenida {
     font-weight: 400;
-    font-size: 50px;
+    font-size: 3.12rem;
     font-family: "Hanalei Fill";
-    margin: 25px 0;
+    margin: 2.1rem 0;
     text-shadow: 2px 2px 4px #fafafa;
 }
 
@@ -173,7 +169,7 @@ body {
 }
 
 .size-emoji {
-    font-size: 25px;
+    font-size: 1.8rem;
 }
 
 .boton-niveles {
@@ -181,7 +177,6 @@ body {
     padding: 5px;
     margin: 10px;
 }
-
 
 /*----------------------------------------------
             SECCIÓN PRINCIPAL
@@ -191,10 +186,19 @@ body {
     height: 100vh;
 }
 
+.contenedor-puntaje-y-juego {
+    margin-bottom: 4rem;
+    max-width: 510px;
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .nombre-juego {
-    font-size: 50px;
+    font-size: 4.5rem;
     font-family: "Hanalei Fill";
-    margin: 3px 0;
+    margin: 2rem 0;
     color: #004225;
     text-shadow: 2px 2px 4px #fafafa;
     text-align: center;
@@ -204,7 +208,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
     background-color: #a5d610;
     border: 3px solid #004225;
     padding: 3px 5px;
@@ -266,11 +269,11 @@ body {
     position: relative;
     width: 610px;
     height: 510px;
-    width: auto;
-    height: 505px;
+    /* width: auto;
+    height: 505px; */
     border-radius: 10px;
     border: 3px solid #004225;
-    background-color: #42424280;
+    background-color: #fafafa90;
     justify-content: center;
     flex-wrap: wrap;
     display: flex;
@@ -282,7 +285,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 34px;
+    font-size: 2.1rem;
     box-sizing: content-box;
     text-align: center;
     transition: top 0.08s, left 0.08s;
@@ -301,20 +304,15 @@ body {
 }
 
 .firmas {
-    width: 250px;
     position: fixed;
     bottom: 5%;
     right: 4%;
     border-radius: 10px;
     border: 3px solid #004225;
     background-color: #a5d610;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
     color: #004225;
     font-family: Oxygen;
-    margin: 10px;
-    padding: 5px;
+    padding: 0.5rem 1.2rem;
     text-align: center;
 }
 
@@ -330,94 +328,11 @@ a:focus {
     font-weight: bold;
 }
 
-
 /*----------------------------------------------
                 RESPONSIVE
 ----------------------------------------------*/
 
-@media (max-width: 600px) {
-    /*----------------------------------------------
-                OVERLAY Y MODALES
-    ----------------------------------------------*/
-    .contenedor-bienvenida,
-    .contenedor-niveles,
-    .contenedor-reinicio,
-    .contenedor-timeout {
-        width: 90vw;
-        position: relative;
-        background-color: #a5d610;
-        border: 3px solid #004225;
-        text-align: center;
-        border-radius: 15px;
-        margin: 10px 30px;
-        padding: 0 30px;
-        /* display: inline-block; */
-        transform: translate(-50%, -50%);
-    }
-    .contenedor-bienvenida,
-    .contenedor-niveles,
-    .contenedor-reinicio,
-    .contenedor-timeout {
-        top: 0;
-        left: 0;
-    }
-    .titulo-bienvenida {
-        font-size: 35px;
-    }
-    .titulo-controles,
-    .titulo-niveles,
-    .titulo-nuevo-juego,
-    .titulo-timeout {
-        font-size: 20px;
-    }
-    .txt-bienvenida,
-    .txt-controles,
-    .txt-nuevo-juego,
-    .txt-timeout {
-        font-size: 16px;
-    }
-    .size-emoji {
-        font-size: 20px;
-    }
-    /* .boton-niveles {
-        width: 200px;
-        padding: 5px;
-        margin: 10px;
-    }*/
-    /*----------------------------------------------
-                SECCIÓN PRINCIPAL
-    ----------------------------------------------*/
-    .seccion-principal {
-        height: 100vh;
-    }
-    .nombre-juego {
-        font-size: 35px;
-    }
-    .contenedor-puntaje {
-        font-size: 24px;
-        font-weight: 100;
-    }
-    #combo {
-        width: 18px;
-    }
-    .img-input {
-        width: 30px;
-        height: 30px;
-    }
-    .contenedor-timer,
-    .contenedor-refresh {
-        font-size: 20px;
-    }
-    .caja-grilla {
-        max-width: 590px;
-        max-height: 510px;
-    }
-    #grilla {
-        font-size: 30px;
-    }
-}
-
-@media (min-width: 1300px) {
+@media screen and (min-width: 1200px) {
     /*----------------------------------------------
                     BASIC
     ----------------------------------------------*/
@@ -453,28 +368,164 @@ a:focus {
                 SECCIÓN PRINCIPAL
     ----------------------------------------------*/
 
-    .nombre-juego {
-        font-size: 70px;
-        margin: 20px;
+    .contenedor-juego {
+        margin-bottom: 15px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    /*----------------------------------------------
+                OVERLAY Y MODALES
+    ----------------------------------------------*/
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        width: 80%;
+        background-color: #a5d610;
+        border: 3px solid #004225;
+        text-align: center;
+        border-radius: 15px;
+        margin: 10px 30px;
+        padding: 0 30px;
+    }
+
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        top: 0;
+        left: 0;
+    }
+
+    .titulo-bienvenida {
+        font-size: 35px;
+    }
+
+    .titulo-controles,
+    .titulo-niveles,
+    .titulo-nuevo-juego,
+    .titulo-timeout {
+        font-size: 20px;
+    }
+
+    .contenedor-niveles {
+        align-items: center;
+    }
+
+    .txt-bienvenida,
+    .txt-controles,
+    .txt-nuevo-juego,
+    .txt-timeout {
+        font-size: 16px;
+    }
+
+    .size-emoji {
+        font-size: 20px;
+    }
+
+    /*----------------------------------------------
+                SECCIÓN PRINCIPAL
+    ----------------------------------------------*/
+    .seccion-principal {
+        height: 100vh;
+    }
+
+    .contenedor-puntaje {
+        font-size: 1.8rem;
+        font-weight: 100;
+    }
+
+    #combo {
+        width: 18px;
+    }
+
+    .img-input {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contenedor-timer,
+    .contenedor-refresh {
+        font-size: 1.25rem;
+    }
+
+    .caja-grilla {
+        max-width: 590px;
+        max-height: 510px;
+    }
+
+    #grilla {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 481px) {
+
+    .contenedor-bienvenida,
+    .contenedor-niveles,
+    .contenedor-reinicio,
+    .contenedor-timeout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: none;
+        width: 60%;
+        min-width: 280px;
+    }
+
+    .seccion-principal {
+        width: 100vw;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .contenedor-puntaje-y-juego {
+        display: flex;
+        justify-content: center;
+        width: 460px;
     }
 
     .contenedor-juego {
-        margin-bottom: 15px;
-        
+        width: calc(100% - 15px);
     }
 
-}
+    .caja-grilla {
+        width: calc(100% - 15px);
+        width: 460px;
+        height: 460px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        display: flex;
+        box-sizing: content-box;
+    }
 
-/*----------------------------------------------
+    #grilla {
+        font-size: 20px;
+        height: 50px;
+
+    }
+
+    /*----------------------------------------------
                 DISPLAY NONE
 ----------------------------------------------*/
 
-.oculto {
-    display: none;
-}
+    .oculto {
+        display: none;
+    }
 
-.fuera-de-foco {
-    opacity: 0;
-    visibility: hidden;
-    left: 2500px;
-}
+    .fuera-de-foco {
+        opacity: 0;
+        visibility: hidden;
+        left: 2500px;
+    }
+
+    /* COLOR PALETTE
+ #b6cc65  #d2d698  #928c42  #1f5215  #629b2d  #afa698  #665a23  #061505  */
