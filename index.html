@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
@@ -20,8 +22,11 @@
 
             <h2 class="titulo-bienvenida">¡Bienvenid@!</h2>
             <div class="contenedor-txt-bienvenida">
-                <p class="txt-bienvenida">En MatcheADAs tu objetivo es juntar tres o más ítems del mismo tipo, ya sea en fila o columna. Para eso, selecciona un ítem y a continuación un ítem adyacente para intercambiarlos de lugar.</p>
-                <p class="txt-bienvenida">Si se forma un grupo, esos ítems se eliminarán y ganarás puntos. ¡Sigue armando grupos de 3 o más antes de que se acabe el tiempo!</p>
+                <p class="txt-bienvenida">En MatcheADAs tu objetivo es juntar tres o más ítems del mismo tipo, ya sea en
+                    fila o columna. Para eso, selecciona un ítem y a continuación un ítem adyacente para intercambiarlos
+                    de lugar.</p>
+                <p class="txt-bienvenida">Si se forma un grupo, esos ítems se eliminarán y ganarás puntos. ¡Sigue
+                    armando grupos de 3 o más antes de que se acabe el tiempo!</p>
 
                 <h4 class="titulo-controles">Controles</h4>
                 <p class="txt-controles">Click izquierdo: selección</p>
@@ -43,9 +48,12 @@
             <h2 class="titulo-niveles">Nuevo Juego</h2>
             <p class="txt-controles">Selecciona el nivel de juego para poder comenzar a jugar!</p>
 
-            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-facil"><span class="size-emoji">🦉 </span> Fácil</button>
-            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-intermedio"><span class="size-emoji">🐵 </span>Intermedio</button>
-            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-dificil"><span class="size-emoji">🦁 </span>Difícil</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-facil"><span class="size-emoji">🦉
+                </span> Fácil</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-intermedio"><span
+                    class="size-emoji">🐵 </span>Intermedio</button>
+            <button type="button" class="boton-basico boton-niveles" id="boton-nivel-dificil"><span
+                    class="size-emoji">🦁 </span>Difícil</button>
 
 
 
@@ -78,7 +86,8 @@
             </div>
 
             <div class="modal-button">
-                <button type="button" class="boton-basico boton-niveles" id="boton-nuevo-juego-timeout">Nuevo Juego</button>
+                <button type="button" class="boton-basico boton-niveles" id="boton-nuevo-juego-timeout">Nuevo
+                    Juego</button>
                 <button type="button" class="boton-basico boton-niveles" id="boton-reiniciar-timeout">Reiniciar</button>
             </div>
 
@@ -89,39 +98,39 @@
     <section class="seccion-principal">
         <h1 class="nombre-juego">MatcheADAS</h1>
 
-        <div class="contenedor-juego">
-            <div class="contenedor-puntaje">
-                <p>Combo x<span id="combo">1</span></p>
-                <p>Puntos: <span id="puntaje">0</span></p>
+        <div class="contenedor-puntaje-y-juego">
+            <div class="contenedor-juego">
+                <div class="contenedor-puntaje">
+                    <p>Combo x<span id="combo">1</span></p>
+                    <p>Puntos: <span id="puntaje">0</span></p>
+                </div>
 
+                <div class="contenedor-refresh">
+                    <input type="image" src="images/icons8-info-64.png" alt="Solicitar información sobre el juego"
+                        class="info-button">
+                    <input type="image" src="images/refresh.png" alt="Volver a barajar las fichas del tablero"
+                        class="refresh-button">
+                </div>
             </div>
 
-            <div class="contenedor-refresh">
-                <input type="image" src="images/icons8-info-64.png" alt="Solicitar información sobre el juego" class="info-button">
-                <input type="image" src="images/refresh.png" alt="Volver a barajar las fichas del tablero" class="refresh-button">
+            <div class="caja-grilla">
+
+                <!-- Grilla se arma en JS -->
+
             </div>
         </div>
-
-        <div class="caja-grilla">
-
-            <!-- Grilla se arma en JS -->
-
-        </div>
-
         <div class="firmas">
-            <p class="txt-firmas">Hecho con mucha 💪 by <a href="https://github.com/rosalybt" target="_blank" class="firma-rosy">@Rosy</a> y <a href="http://github.com/luzyla" target="_blank" class="firma-lu">@Luzyla</a></p>
+            <p class="txt-firmas">Hecho con mucha 💪 by <a href="https://github.com/rosalybt" target="_blank"
+                    class="firma-rosy">@Rosy</a> y <a href="http://github.com/luzyla" target="_blank"
+                    class="firma-lu">@Luzyla</a></p>
         </div>
 
     </section>
 
-
-
     <footer class="oculto">
-        <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+        <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a
+                href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
     </footer>
-
-
-
 
     <script src="index.js "></script>
 </body>
